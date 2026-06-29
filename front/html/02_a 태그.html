@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>a 태그 예제</title>
 </head>
-<body>
+<body id="top">
 	<!-- 
 	p.46
 	a태그
@@ -29,6 +29,46 @@
 	<a href="/naver.com">네이버로 이동(현재페이지에서)(https가 없어서 정상동작X)</a><br>
 	<a href="tel:+8219-1234-5678">전화걸기</a><br>
 	<a href="tel:019-1234-5678">전화걸기</a><br>
-	<a href="//naver.com" target="_blank">네이버로 이동(새창에서)</a>
+	<a href="//naver.com" target="_blank">네이버로 이동(새창에서)</a><br>
+	<!-- 
+	html에서 글자 사이의 공백은 무조건 스페이스 1개로 처리 
+	- 엔터 => 스페이스 1개
+	- 탭키 => 스페이스 1개
+	- 스페이스 여러개 => 스페이스 1개 -->
+	안녕하세요. 
+	제 이름은 홍길동입니다.                만나서 반가워요.
+	<br>
+	<a href="#last">페이지 마지막으로 이동</a><br>
+	<!-- 1번 예제로 이동 -->
+	<a href="01_html기본예제.html">01예제 파일 이동</a><br>
+	<!-- 1번 예제 파일명으로 다운 -->
+	<a href="01_html기본예제.html" download>01예제 파일 다운로드</a><br>
+	<!-- 1번 예제를 지정이름으로 다운 -->
+	<a href="01_html기본예제.html" download="1번예제.html">01예제 파일 다운로드</a><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<!-- 
+	태그의 id 속성
+	- 태그에 고유값을 지정 -->
+	<div id="last">끝입니다.</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<!-- 위로가기 링크를 만들어서 클릭하면 페이지 제일 상단으로 이동하도록 작성 -->
+	<a href="#top">페이지 처음으로 이동</a><br>
+	<!-- 
+	경로 지정 방식
+	- 절대 경로
+		- 최상위 경로를 기준으로 계산
+		- 앞에 /를 붙임
+		- vs code에서 open folder를 어떤 폴더로 하느냐에 따라 되던 코드가 안될 수 있음
+	- 상대 경로
+		- 현재 파일을 기준으로 계산
+		- 앞에 /를 안붙임
+		- ../ : 상위 폴더
+	-->
+	<a href="01_html기본예제.html" target="_blank">1번 예제로 이동(상대경로)</a><br>
+	<a href="../html/01_html기본예제.html" target="_blank">1번 예제로 이동(상대경로2)</a><br>
+	<a href="/html/01_html기본예제.html" target="_blank">1번 예제로 이동(절대경로)</a>
 </body>
 </html>
