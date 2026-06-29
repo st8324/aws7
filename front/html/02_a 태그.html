@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>a 태그 예제</title>
+</head>
+<body>
+	<!-- 
+	p.46
+	a태그
+	- 페이지를 이동할 때 사용하는 태그
+	속성
+		- href : 이동할 위치를 지정
+			- URL 주소(http나 https 포함) : 다른 사이트로 이동
+			- URL 주소(http/https 미포함) : 같은 사이트의 다른 페이지로 이동
+			- tel:전화번호 : 전화번호 연결(모바일에서)
+			- mailto:이메일주소 : 이메일 작성으로 연결(아웃록)
+			- #아이디명 : 같은 페이지의 특정 위치로 이동
+		- target : 링크 페이지가 표시될 위치
+			- _self : 기본값, 현재창
+			- _blank: 새창이나 새탭
+		- download : 파일을 다운로드할 때 사용
+			- 값을 지정하지 않으면 서버에 있는 파일명을 그대로 다운
+			- 값을 지정하면 지정된 이름으로 다운
+		- rel : 현재 문서와 링크된 문서의 관계를 나타내는 속성
+	-->
+	<a href="https://naver.com">네이버로 이동(현재페이지에서)</a><br>
+	<a href="/naver.com">네이버로 이동(현재페이지에서)(https가 없어서 정상동작X)</a><br>
+	<a href="tel:+8219-1234-5678">전화걸기</a><br>
+	<a href="tel:019-1234-5678">전화걸기</a><br>
+	<a href="//naver.com" target="_blank">네이버로 이동(새창에서)</a>
+</body>
+</html>
