@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>입력 태그 예제</title>
+</head>
+<body>
+	<!-- 
+	p.62
+	select 태그
+	- 미리 지정된 값을 선택
+	- option 태그와 함께 사용
+	
+	option 태그
+	- 속성
+		- value : 선택했을 때 값을 지정. 생략하면 option태그 안에 있는 문구가 value로 지정
+		- selected : 초기 값을 선택
+
+	optgroup 태그
+	- option 태그들을 묶어서 보여줄 때 사용
+	- 속성
+		- label : option 태그 묶음의 이름을 지정
+	-->
+	<h1>select 태그 예제</h1>
+	<form action="">
+		<label for="gender">성별</label>
+		<select name="gender" id="gender">
+			<option value="male">남성</option>
+			<option selected>여성</option>
+		</select>
+		<h5>태어난해</h5>
+		<select name="year">
+			<optgroup label="2000년대">
+				<option>2026</option>
+				<option>2025</option>
+				<option>2001</option>
+				<option>2000</option>
+			</optgroup>
+			<optgroup label="1900년대">
+				<option>1999</option>
+				<option>1998</option>
+				<option>1997</option>
+			</optgroup>
+		</select>
+		<button>전송</button>
+	</form>
+
+	<!-- 
+	p.62
+	textarea태그
+	- 여러 줄의 문장을 입력할 때 사용
+	- 초기값을 value 속성이 아닌 태그 사이에 넣어줌
+	- rows/cols 속성을 이용하여 한 행의 글자수(열의 개수)와 행의 개수를 지정.=> 크기가 바뀜. 잘사용안함
+	-->
+	<form action="">
+		<label for="content">내용</label> <br>
+		<textarea 
+			name="content" id="content" placeholder="내용을 입력하세요."
+			cols="30" rows="30">초기 내용</textarea>
+		<button>전송</button>
+	</form>
+	<!-- 
+	datalist 태그
+	- 등록된 값들 중에서 입력을 통해 선택해서 사용
+	- option태그, input태그와 함께 사용
+	- 사용방법
+		- datalist 태그에 id를 설정
+		- input 태그에 list 속성을 추가. 값으로 datalist 태그의 id값을 입력
+	-->
+	<form action="">
+		<h1>좋아하는 도시는?</h1>
+		<input type="text" name="city" list="cities">
+		<datalist id="cities">
+			<option>서울</option>
+			<option>울산</option>
+			<option>대전</option>
+			<option>대구</option>
+			<option>구미</option>
+			<option>제주</option>
+			<option>광주</option>
+		</datalist>
+		<button>전송</button>
+	</form>
+</body>
+</html>
