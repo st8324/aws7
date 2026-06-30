@@ -1,6 +1,11 @@
 # aws7
-AI융합 과정 수업 자료
-* 연습입니다.
-* 집에서 복습했어요.
-* main 브랜치에서 작업했습니다.
-* test1 브랜치에서 작업했습니다.
+AI융합 과정 수업 자료 저장소 입니다.
+
+## 설치 프로그램
+1. GitHub Desktop[(링크)](https://desktop.github.com/download/)
+2. Visual Studio Code[(링크)](https://code.visualstudio.com/download?_exp_download=fb315fc982)
+	* 확장 프로그램
+		* Auto rename Tag
+		* Css Navigation
+		* Live Server
+		* Prettier - Code fomatter
