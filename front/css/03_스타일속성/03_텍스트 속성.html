@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>텍스트 속성 예제</title>
+	<!-- 
+	text-decoration
+	- 글자에 줄 긋기
+	- underline : 밑줄
+	- overline : 윗줄
+	- line-through : 취소선(가운데줄)
+	- none : 없음
+	- 주로 a태그에 밑줄을 없애거나(none) 추가할(underline) 때 사용
+
+	white-space
+	- 공백 처리 방법
+	- nomal : 여러 공백을 하나로 처리. 기본값
+	- nowrap : 여러 공백을 하나로 처리. 줄 바꿈 없이 한줄 표시
+	- pre : 여러 공백을 그대로 처리
+	- pre-line : 여러 공백을 하나로 처리. 엔터 구분. 영역 넘어가면 자동 줄 바꿈
+	- pre-wrap : 여러 공백을 그대로 처리. 영역 넘어가면 자동 줄 바꿈
+	- 주로 nowrap 많이 사용
+
+	letter-spacing(p.111) : 글자 간격
+	word-spacing(p.107) : 단어 간격
+
+	line-height(p.107)
+	- 한줄 높이. 한 줄에 글자를 상하 기준으로 가운데 배치
+	- inline 요소들의 높이를 line-height로 조절
+
+	text-align(p.109) : 
+	- 글자 정렬 방법. center, left, right, justify(양쪽 정렬)
+	- inline이나 inline-block 요소도 함께 정렬
+
+	text-overflow : 영역을 벗어난 텍스트 표시 방법. clip(자름), ellipsis(말줄임...)
+
+	overflow 
+	- 영역을 벗어난 요소를 보여줄지 말지를 결정
+	- visible : 보여줌. 기본값
+	- hidden : 안보이게 감춤
+	- scroll : 스크롤을 추가(넘어가지 않아도 스크롤이 보임)
+	- auto : 요소가 넘어가면 스크롤이 추가
+	-->
+	<style>
+		a{ text-decoration: none; color: black;}
+		a:hover{ text-decoration: underline;color: red;}
+		/* .box에 있는 속성들은 아직 안배운 속성들. 테두리와 밑 여백 지정 */
+		.box{border: 1px solid black; margin-top: 10px; width: 150px;}
+		.box1{white-space: normal;}
+		.box2{white-space: nowrap;}
+		.box3{white-space: pre;}
+		.box4{white-space: pre-line;}
+		.box5{white-space: pre-wrap;}
+
+		.spacing1{ letter-spacing: -.3px;}
+		.spacing2{ word-spacing: 15px;}
+
+		.line1{ line-height: 20px; background: yellow; display: inline-block;}
+		.line2{ line-height: 40px; background: skyblue; display: inline-block;}
+		
+		.overflow1,.overflow2{ 
+			width: 200px; border: 1px solid black; margin-bottom: 10px; 
+			white-space: nowrap; overflow: hidden;
+		}
+		.overflow1{ text-overflow: ellipsis;}
+		.overflow2{ text-overflow: clip;}
+
+		.of-auto{ 
+			width: 200px; height: 100px; overflow: auto; 
+			margin: 10px; border: 1px solid black;}
+		.of-hidden{ width: 200px; height: 100px; overflow: hidden; border: 1px solid black;}
+
+		.center{ text-align: center; border: 1px solid black; margin-bottom: 10px;}
+		.left{ text-align: left; border: 1px solid black; margin-bottom: 10px;}
+		.right{ text-align: right; border: 1px solid black; margin-bottom: 10px;}
+		.justify{ text-align: justify; border: 1px solid black; margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+	<h1>text-decoration 예제</h1>
+	<a href="//naver.com" target="_blank">네이버로 이동</a>
+	
+	<h1>white-space 예제</h1>
+	<div class="box1 box">
+		안녕하세요. 홍길동입니다. 
+		만나서					반갑습니다.
+	</div>
+	<div class="box2 box">
+		안녕하세요. 홍길동입니다. 
+		만나서					반갑습니다.
+	</div>
+	<div class="box3 box">
+		안녕하세요. 홍길동입니다. 
+		만나서					반갑습니다.
+	</div>
+	<div class="box4 box">
+		안녕하세요. 홍길동입니다. 
+		만나서					반갑습니다.
+	</div>
+	<div class="box5 box">
+		안녕하세요. 홍길동입니다. 
+		만나서					반갑습니다.
+	</div>
+	
+	<h1>간격 예제(글자, 단어)</h1>
+	<div class="spacing1">
+		하이 헬로우 안녕
+	</div>
+	<div class="spacing2">
+		하이 헬로우 안녕
+	</div>
+
+	<h1>line-height 예제</h1>
+	<span class="line1">안녕하세요.</span>
+	<span class="line2">안녕하세요.</span>
+
+	<h1>text-overflow 예제</h1>
+	<div class="overflow1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto exercitationem cupiditate cum nobis alias corporis optio, quia debitis. Deserunt, quidem.</div>
+	<div class="overflow2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto exercitationem cupiditate cum nobis alias corporis optio, quia debitis. Deserunt, quidem.</div>
+	
+	<h1>overflow 예제</h1>
+	<div class="of-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio molestiae, nam tempora odio ab molestias ut soluta dolore eligendi aliquid fuga necessitatibus a iusto nulla perferendis modi quibusdam mollitia vero!</div>
+	<div class="of-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio molestiae, nam tempora odio ab molestias ut soluta dolore eligendi aliquid fuga necessitatibus a iusto nulla perferendis modi quibusdam mollitia vero!</div>
+
+	<h1>text-align 예제</h1>
+	<div class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia veritatis impedit magni laborum voluptatem odit cum reiciendis id sed excepturi?</div>
+	<div class="left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia veritatis impedit magni laborum voluptatem odit cum reiciendis id sed excepturi?</div>
+	<div class="right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia veritatis impedit magni laborum voluptatem odit cum reiciendis id sed excepturi?</div>
+	<div class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia veritatis impedit magni laborum voluptatem odit cum reiciendis id sed excepturi?</div>
+</body>
+</html>
