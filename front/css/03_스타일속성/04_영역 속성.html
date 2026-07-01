@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>영역 속성 예제</title>
+	<!-- 
+
+	요소의 구성 : 마진 + 테두리 + 패딩 + 컨텐츠
+
+	box-sizing
+	- widht/height의 기준을 정하는 속성
+	- 값
+	  - border-box : 테두리 + 패딩 + 컨텐츠 => 너비/높이
+		- content-box : 컨텐츠 => 너비/높이
+
+	- width/height(p.113)
+		- 요소의 너비/높이로, box-sizing에 따라 기준이 달라짐
+		- width가 100px일 때
+		  - border-box인 경우 : 
+			  - 왼쪽 테두리 : 10px, 오른쪽 테두리 10px, 왼쪽패딩 10px, 오른쪽 패딩 10px, 컨텐츠 60px
+				  => width는 여전히 100px. 패딩은 고정 각 테두리가 5px 증가
+					=> 컨텐츠는 50px로 줄어듬
+			- context-box인 경우 : 
+				- 왼쪽 테두리 : 10px, 오른쪽 테두리 10px, 왼쪽패딩 10px, 오른쪽 패딩 10px, 컨텐츠 100px
+				=> width는 여전히 100px. 패딩은 고정 각 테두리가 5px 증가
+				=> 컨텐츠는 100px
+				=> 요소의 너비 => 왼테 15px 오테 15px 왼패 10px 오패 10px 컨텐츠 100px
+				  => 150px
+		
+	margin(p.115)
+	- 요소의 테두리 밖 여백을 지정
+	- margin-top(상), margin-right(우), margin-bottom(하), margin-left(좌)
+	- margin
+	  - 단축 속성. 상,우,하,좌 마진을 한번에 쓴 속성
+		- 예시
+		  - margin : 10px 20px 30px 40px
+			  - 위 10px 우 20px 하 30px 좌 40px
+			- margin : 10px 20px 30px 
+			  - 위 10px 우 20px 하 30px 좌 20px
+			- margin : 10px 20px 
+			  - 상하 10px 좌우 20px
+			- margin : 10px
+			  - 상하 좌우 10px
+			- margin : 0 auto
+			  - width가 고정 px일 때 부모 요소 가운데 배치
+
+	padding(p.118)
+	- 요소안 여백을 지정
+	- 사용 방식은 margin과 동일
+	- 테두리를 기준으로 컨텐츠의 시작 위치를 지정할 때 패딩을 활용
+
+	테두리(p.121)
+	border-width
+	- 테두리 두께
+	- 단축 속성 : border-위치-width를 합침. 위치에는 top, right, bottom, left
+
+	border-style
+	- 테두리 종류
+	- 단축 속성 : border-위치-style를 합침. 위치에는 top, right, bottom, left
+	- 값 : solid(실선), dashed, dotted, none, double, ridge, inset, outset 등
+	  - solid : 실선, none : 테두리를 없앰(테두리 두께 적용 X)
+
+	border-color
+	- 테두리 색상
+	- 단축 속성 : border-위치-color를 합침. 위치에는 top, right, bottom, left
+
+	border
+	- border-style, border-width, border-color가 모두 적용되는 속성
+	- border-위치를 합친 속성
+
+	border-radius
+	- 둥근 모서리 테두리를 지정
+	- border-위치1-위치2-radious를 줄여쓴 단축 속성
+	  - 위치1 : top, bottom, 위치2 : left, right
+	-->
+		<style>
+			.box1{ 
+				width: 200px; height: 200px; padding: 20px; border: 20px solid black;
+				margin-top: 20px;
+			}
+			.border-box{box-sizing: border-box;}
+			.content-box{box-sizing: content-box; }
+			.m2{margin-left: 50px;}
+			.m3{margin: 40px 100px;}
+			.m4{margin: 0 auto;}
+			
+			.container3 > .box1{ padding : 0}
+
+			.container3 > .p1{ padding-left: 200px;}
+			.container3 > .p2{ padding: 50px 150px;}	
+			.container3 > .p3{ padding: 50px;}	
+
+			.b1{ border-width: 1px 10px; }
+			.b2{ border-style: dotted double dashed none;}
+			.b3{ border-color: red blue green yellow;}
+			.b4{ border-top: none; border-right: 0;}
+			.b5{ border: 3px solid red; border-radius: 50%;}
+		</style>
+</head>
+<body>
+	<div class="container1">
+		<h1>box-sizing 예제</h1>
+		<div class="box1 border-box">border-box</div>
+		<div class="box1 content-box">content-box</div>
+	</div>
+
+	<div class="container2">
+		<h1>margin 예제</h1>
+		<div class="box1 m1"></div>
+		<div class="box1 m2"></div>
+		<div class="box1 m3"></div>
+		<div class="box1 m4"></div>
+	</div>
+
+	<div class="container3">
+		<h1>padding 예제</h1>
+		<div class="box1"></div>
+		<div class="box1 p1"></div>
+		<div class="box1 p2"></div>
+		<div class="box1 p3"></div>
+	</div>
+	
+	<div class="container4">
+		<h1>테두리 예제</h1>
+		<div class="box1 b1"></div>
+		<div class="box1 b2"></div>
+		<div class="box1 b3"></div>
+		<div class="box1 b4"></div>
+		<div class="box1 b5"></div>
+	</div>
+</body>
+</html>
