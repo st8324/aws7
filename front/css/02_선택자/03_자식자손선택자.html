@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자식 자손 선택자 예제</title>
+	<style>
+		/* 
+		- 자식 선택자(p.76)
+		부모선택자 > 자식선택자
+		- 부모 요소 안에 있는 자식을 선택
+		- 자녀만 해당
+
+		- 자손 선택자(p.75)
+		조상선택자 자손선택자
+		- 조상 요소 안에 있는 자손을 선택
+		- 자녀, 증손주 등 모든 후손을 포함
+		*/
+		.btn{
+			font-size: 30px;
+		}
+		header .btn{
+			color: red;
+		}
+		/* nav > .btn{
+			color: red;
+		} */
+	</style>
+</head>
+<body>
+	<!-- 
+	body 태그의 자식은 누가 있을까요? 
+	- header, main
+	body 태그의 자손은 누가 있을까요? 태그명만
+	- header, main, nav, button, section
+	-->
+	<!-- 
+	모든 <,>버튼 크기를 30px로 하고, 
+	그 중 nav 태그에 있는 버튼들은 빨강
+	-->
+	<button>123</button>
+	<header>
+		<nav>
+			<button class="btn"><</button>
+			<button class="btn">></button>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<button class="btn"><</button>
+			<button class="btn">></button>
+		</section>
+		<section>
+			<button class="btn"><</button>
+			<button class="btn">></button>
+		</section>
+	</main>
+</body>
+</html>

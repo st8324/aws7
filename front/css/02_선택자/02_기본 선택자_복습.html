@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>기본 선택자 복습</title>
+	<style>
+		/* 모든 input 태그를 선택하는 선택자를 쓰세요.*/
+		input{
+			border: 2px solid red;
+		}
+		/* input 태그 중 홀수번째 있는 요소들을 선택하는 선택자를 쓰세요.	*/
+		.input-a{
+			color: red;
+		}
+		/* 아이디가 first인 태그를 선택하는 선택자를 쓰세요 */
+		#first{
+			background: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value="1" class="input input-a" id="first">
+	<input type="text" value="1" class="input input-b">
+	<input type="text" value="1" class="input input-a">
+	<input type="text" value="1" class="input input-b">
+	<!-- 
+	모든 태그에 value를 사용할 수 있다?
+	- 모든 태그에 value 속성을 쓸수는 있지만 적용은 안될 수 있음
+	-->
+	<div value="1"></div>
+</body>
+</html>
