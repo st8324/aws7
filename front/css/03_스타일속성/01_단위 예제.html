@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>폰트 속성 예제</title>
+	<!-- 
+	단위 (자주 사용되는 것들만)
+	- px : 고정 픽셀
+	- % : 부모 요소의 %. 100%로 쓰면 부모 요소 크기
+	- em : 부모 요소 값의 배수. 1em == 100%
+	  - 부모 요소의 글자크기 : 20px
+		- 자식 요소의 글자크기 : 0.8em => 16px
+	- rem : 최상위 요소(html 태그) 값의 배수
+		- 부모 요소의 글자크기 : 20px
+		- 최상위 요소의 글자크기 : 10px
+		- 자식 요소의 글자크기 : 0.8rem => 8px
+	- vh : view height, 현재 브라우저 높이 == 100vh
+	- vw : view width, 현재 브라우저 너비 == 100vw
+	- vmin/vmax : vh와 vw 중 최소값/최대값
+	- deg : 각도
+
+	함수(기능)
+	- calc() : 서로 다른 단위를 계산해주는 함수. 연산자 앞뒤로 공백 필요
+		- calc(100% / 3) (O)
+		- calc(100%/3) (x)
+	-->
+		<style>
+			html{ font-size: 10px;}
+			.box{ font-size: 20px; }
+			.em{ font-size: 0.8em;}
+			.rem{ font-size: 0.8rem;}
+			.vhvw{ width: 100vw; height: 100vh; background: yellow;}
+			.px{ width: 400px; height: 400px; background: red;}
+			.calc{ font-size: calc(20rem - 100px);}
+			.w-200{ width: 200px; background: gray;}
+			.w-400{ width: 400px; background: skyblue;}
+			.percent-50{ width: 50%; background: tomato; height: 50px;}
+			.percent-80{ width: 80%; background: pink; height: 50px;}
+		</style>
+</head>
+<body>
+	<h1>단위 예제</h1>
+	<h2>html 태그 글자 크기 : 10px</h2>
+	<div class="box">
+		<h2 class="em">부모 태그 글자 크기 : 20px, 내 글자크기 : 0.8em</h2>
+	</div>
+	<div class="box">
+		<h2 class="rem">부모 태그 글자 크기 : 20px, 내 글자크기 : 0.8rem</h2>
+	</div>
+	<div class="calc">calc(20rem - 100px) == 100px</div>
+
+	<div class="vhvw"></div>
+	<div class="px"></div>
+
+	
+	<div class="w-200">
+		<div class="percent-80"></div>
+		<div class="percent-50"></div>
+	</div>
+	<div class="w-400">
+		<div class="percent-80"></div>
+		<div class="percent-50"></div>
+	</div>
+</body>
+</html>
