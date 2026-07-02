@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>구조 선택자 예제</title>
+	<style>
+		/* 
+		형태 구조 선택자(p.78~82)
+		- 몇번째 위치에 있는 요소인지를 선택
+		- 태그명과 함께 사용. 클래스 선태자는 의미가 없음
+		- of-type이 들어간 선택자
+		- 태그명:nth-of-type(숫자)
+		  - 태그들 중 숫자번째 위치에 있는 요소
+		- 태그명:nth-of-type(수열)
+		  - 2n(짝수번째), 2n+1(홀수번째)와 같은 수열이 들어 감. 해당 번째 요소들을 선택
+		- 태그명:first-of-type
+		  - 태그들 중 첫번째 있는 요소
+		- 태그명:last-of-type
+		  - 태그들 중 마지막에 있는 요소
+
+		일반 구조 선택자
+		- 태그 종류 상관없이 순서에 맞는 요소를 선택
+		- child
+		- :nth-child(), :first-child(), :last-child
+		*/
+		[class^=container] > * { font-size: 30px;}
+
+		.container1 > p:nth-of-type(2n){ color: red; }
+		.container1 > p:last-of-type{ font-weight: bold;}
+		.container1 > div:first-of-type{ text-decoration: underline;}
+
+		.container2 > :nth-child(2n) { color: red;}
+		.container2 > :last-child{ font-weight: bold;}
+		.container2 > :first-child{ text-decoration: underline;}
+	
+	</style>
+</head>
+<body>
+	<h1>형태 구조 선택자 예제(of-type)</h1>
+	<div class="container1" id="a">
+		<p class="item">p item1</p>
+		<p class="item">p item2</p>
+		<p class="item B">p item3</p>
+		<div class="item">d item1</div>
+		<p class="item">p item4</p>
+		<div class="item">d item2</div>
+	</div>
+
+	<h1>일반 구조 선택자 예제(child)</h1>
+	<div class="container2">
+		<p class="item">p item1</p>
+		<p class="item">p item2</p>
+		<p class="item">p item3</p>
+		<div class="item">d item1</div>
+		<p class="item">p item4</p>
+		<div class="item">d item2</div>
+	</div>
+</body>
+</html>
