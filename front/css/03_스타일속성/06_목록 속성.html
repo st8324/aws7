@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>목록 속성 예제</title>
+	<style>
+		/* 
+		ul, ol 태그 관련 스타일 속성
+
+		list-style-type
+		- 마커 종류
+		- 값
+		  - ul : disc(기본), circle, squre
+			- ol : 
+			  - decimal(기본, 숫자), decimal-leading-zero(숫자)
+				- lower-raman/upper-roman
+				- lower-alpha/upper-alpha
+				- lower-ratin/upper-ratin
+			- 공통 : none(마커 없음)
+		
+		list-style-image
+		- 이미지를 마커로 사용
+		- url 함수 이용
+
+		list-style-position
+		- 마커 위치
+		- 값
+		  - inside : li태그 안쪽
+			- outside : li태그 바깥쪽
+		
+		list-style
+		- type, position. image를 한번에 적용하는 단축속성
+		*/
+		.list1{	list-style-type: square;	}
+		.list2{ list-style-type: decimal-leading-zero; list-style-position: inside;}
+		.list3{ list-style-image: url(../../img/강아지.jfif);}
+		.list4{ list-style: none; padding: 0; margin: 0;}
+	</style>
+</head>
+<body>
+	<h1>목록 예제</h1>
+	<ul class="list1">
+		<li>사과</li>
+		<li>포도</li>
+		<li>바나나</li>
+	</ul>
+	<hr>
+	<ol class="list2">
+		<li>사과</li>
+		<li>포도</li>
+		<li>바나나</li>
+	</ol>
+	<hr>
+	<ul class="list3">
+		<li>사과</li>
+		<li>포도</li>
+		<li>바나나</li>
+	</ul>
+	<ul class="list4">
+		<li>사과</li>
+		<li>포도</li>
+		<li>바나나</li>
+	</ul>
+</body>
+</html>
