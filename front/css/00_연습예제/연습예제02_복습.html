@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<style>
+		/* 
+		태그의 구성
+		1. 단일태그
+		<태그명 속성="값" 속성 class="값1 값2" id="id1">
+
+		2. 쌍태그
+		<태그명 속성="값" 속성 class="값1 값3" id="id2"></태그명>
+
+		*/
+		/* 기본 선택자
+		
+		1. 모든 선택자 : 0
+		*{} : 글꼴, 여백을 제거
+
+		2. 태그 선택자 : 1
+		a{} : 밑줄이나 글자색을 변경
+		
+		3. 클래스 선택자 : 10
+		.값1{}
+
+		4. 아이디 선택자 : 100
+		#id1{}
+
+		우선순위가 필요한 이유?
+		- 여러 선택자가 같은 일(스타일)을 시킬 때 누구 말을 들을지 결정하기 위해서
+		  => 우선순위가 높은 선택자 말을 따르면 됨
+			=> 같으면? 코드 순서상 나중(밑)에 있는 선택자를 따르면 됨
+		*/
+		a {
+			color:rgb(53, 202, 68); text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<a href="//naver.com" target="_blank">네이버로 이동</a>
+</body>
+</html>
