@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>동위 선택자 예제</title>
+	<style>
+		/* 
+		동위 선택자
+		- 같은 부모를 가진 요소를 선택
+		- 형제 요소를 선택
+
+		선택자1 + 선택자2{}
+		- 선택자1 바로 뒤에 있는 선택자2를 선택 => 바로 뒤에 있는 하나를 선택
+
+		선택자1 ~ 선택자2{}
+		- 선택자1 뒤에 있는 선택자2를 선택 => 뒤에 있는 여러개를 선택
+
+		한 요소를 구체적으로 표현하는 선택자
+		- 선택자를 공백없이 나열
+		- 태그명이 들어가는 경우 태그명을 제일 앞에 작성
+		*/
+		.list1 > .item + .item{ color : red}
+		.list2 > .item ~ .item{ color : red}
+
+		span.first{ color: red;}
+		
+	</style>
+</head>
+<body>
+	<h1>동위 선택자 예제</h1>
+	<ul class="list1">
+		<li class="item">1</li>
+		<li class="item2">2</li>
+		<li class="item">3</li>
+		<li class="item">4</li>
+	</ul>
+	<ul class="list2">
+		<li class="item">1</li>
+		<li class="item2">2</li>
+		<li class="item">3</li>
+		<li class="item">4</li>
+	</ul>
+
+	<div class="container">
+		<div class="first">1</div>
+		<div>2</div>
+		<div>3</div>
+		<span class="first">4</span>
+		<span>5</span>
+		<span>6</span>
+	</div>
+</body>
+</html>
