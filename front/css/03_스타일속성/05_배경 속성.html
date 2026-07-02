@@ -61,9 +61,110 @@
 			- padding-box : 패딩부터 배경 배치
 			- content-box : 컨텐츠부터 배경 배치
 		*/
+		.box{
+			/* 테두리가 있는 박스(결과 확인하기 쉽게) */
+			width: 200px; height: 200px; padding: 10px;	border: 10px solid black; 
+			/* 다른 박스랑 겹치지 않게  */
+			margin-bottom: 10px;
+		}
+		.bg-color1{ background-color: yellow;}
+		.bg-color2{ background-color: #ff0000;}
+
+		.bg-img1{ background-image: url(../../img/강아지.jfif)}
+		.bg-img2{ background-image: url(/img/강아지.jfif);}
+
+		.bg-size1{ background-size: 50% 50%;}
+		.bg-size2{ background-size: contain; background-position: center;}
+		.bg-size3{ background-size: cover; background-position: center;}
+
+		.bg-repeat1{ background-repeat: repeat-x;}
+		.bg-repeat2{ background-repeat: repeat-y;}
+		.bg-repeat3{ background-repeat: no-repeat;}
+
+		.bg-pos1{ background-position: 30px 30px ;}
+		.bg-pos2{ background-position: -30px -30px ;}
+
+		.bg-fixed{ background-attachment: fixed;}
+
+		.bg-clip1{ background-clip: border-box; border-color: transparent;}
+		.bg-clip2{ background-clip: padding-box; border-color: transparent;}
+		.bg-clip3{ background-clip: content-box; border-color: transparent;}
+
+		.bg-origin1{ background-origin: border-box; border-color: transparent; background-repeat: no-repeat;}
+		.bg-origin2{ background-origin: padding-box; border-color: transparent;background-repeat: no-repeat;}
+		.bg-origin3{ background-origin: content-box; border-color: transparent;background-repeat: no-repeat;}
+
+		body{background-color: yellow;}
+
+		/* 
+		background : 배경 속성을 한번에 지정하는 단축 속성
+		- color image attachment clip origin size 순으로 작성하며 한번에 적용
+		*/
+		.bg{
+			background-color: gray;
+			background-image: url(../../img/강아지.jfif);
+			background-repeat: no-repeat;
+			background-position: top left;
+			background-size: 50% 50%;
+			background: gray url(../../img/강아지.jfif) no-repeat top left / 50% 50%;
+		}
 	</style>
 </head>
 <body>
+	<div class="container1">
+		<h1>배경 색</h1>
+		<div class="box bg-color1"></div>
+		<div class="box bg-color2"></div>
+	</div>
 	
+	<div class="container2">
+		<h1>배경 이미지</h1>
+		<div class="box bg-img1"></div>
+		<div class="box bg-img2"></div>
+	</div>
+
+	<div class="container3">
+		<h1>배경 크기</h1>
+		<div class="box bg-size1 bg-img1"></div>
+		<div class="box bg-size2 bg-img1"></div>
+		<div class="box bg-size3 bg-img1"></div>
+	</div>
+
+	<div class="container4">
+		<h1>배경 반복</h1>
+		<div class="box bg-img1 bg-size1 bg-repeat1"></div>
+		<div class="box bg-img1 bg-size1 bg-repeat2"></div>
+		<div class="box bg-img1 bg-size1 bg-repeat3"></div>
+	</div>
+
+	<div class="container5">
+		<h1>배경 위치</h1>
+		<div class="box bg-img1 bg-pos1"></div>
+		<div class="box bg-img1 bg-pos2"></div>
+	</div>
+
+	<div class="container6">
+		<h1>배경 고정</h1>
+		<div class="box bg-img1 bg-fixed"></div>
+	</div>
+
+	<div class="container7">
+		<h1>배경 범위</h1>
+		<div class="box bg-img1 bg-clip1"></div>
+		<div class="box bg-img1 bg-clip2"></div>
+		<div class="box bg-img1 bg-clip3"></div>
+	</div>
+
+	<div class="container8">
+		<h1>배경 시작 위치</h1>
+		<div class="box bg-img1 bg-origin1"></div>
+		<div class="box bg-img1 bg-origin2"></div>
+		<div class="box bg-img1 bg-origin3"></div>
+	</div>
+
+	<div class="container9">
+		<h1>배경</h1>
+		<div class="box bg"></div>
+	</div>
 </body>
 </html>
