@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응 선택자 예제</title>
+	<!-- 
+	p.84
+	반응 선택자
+	선택자:hover{}
+	- 요소에 마우스를 올렸을 때 적용
+	선택자:active{}
+	- 요소를 클릭했을 때
+	선택자::visited{}
+	- a태그에서 해당 사이트를 방문한 뒤
+	- 사용할 수 없는 속성 : font-weight, font-size, font-family, width, height, padding, margin 등
+	  => 보안 및 개인정보 보호 정책 때문에
+
+	상태 선택자
+	선택자:checked{}
+	- checkbox나 raido가 체크된 상태
+
+	선택자:focus{}
+	- 요소가 활성화된 상태
+	- 주로 input태그에 입력창이 활성화됐을 때 사용
+
+	선택자:enabled{}
+	- 요소가 사용가능한 상태
+
+	선택자:disabled{}
+	- 요소가 사용 불가능한 상태
+	- input태그에서 disabled 속성이 적용됐을 때
+	-->
+	<style>
+		.hover:hover{ color: red;}
+		.active:active{ color: blue;}
+		.visited:visited{ color: black;}
+
+		input:checked{ width: 30px; height: 30px;}
+		input:focus{ background-color: yellow;}
+		input:enabled{ border: 3px solid black;}
+		input:disabled{border: 3px solid red;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>반응 선택자</h1>
+		<div class="hover">hover</div>
+		<div class="active">active</div>
+		<a href="//naver.com" class="visited">네이버로 이동</a>
+	</div>
+	<div class="container">
+		<h1>상태 선택자</h1>
+		<h3>취미</h3>
+		<input type="checkbox" name="hobby"> 운동
+		<input type="checkbox" name="hobby"> 독서
+		<h3>성별</h3>
+		<input type="radio" name="genger" value="male">남성
+		<input type="radio" name="genger" value="female">여성
+		<hr>
+		<input type="text" value="123">
+		<input type="text" value="123" readonly>
+		<input type="text" value="123" disabled>
+	</div>
+</body>
+</html>
