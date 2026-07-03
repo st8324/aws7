@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>점 만들기 예제</title>
+	<style>
+		.wrap{ line-height: 24px;}
+		.dot{ padding-left: 20px; position: relative;}
+		.dot::before{
+			content: ''; 
+			width: 4px; height: 4px;
+			background: red; border-radius: 50%; 
+
+			position: absolute; 
+			/* 메뉴2 앞여백의 중심으로 이동(점의 시작지점을) */
+			top: 12px; left: 10px;
+			/* 점을 가운데 이동시키기 위해 점 크기의 반씩 왼쪽위로 이동 */
+			margin-left: -2px; margin-top: -2px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>before, position을 이용한 점 만들기</h1>
+		<div class="wrap">
+			<span>메뉴1</span>
+			<span class="dot">메뉴2</span>
+		</div>
+	</div>
+</body>
+</html>
