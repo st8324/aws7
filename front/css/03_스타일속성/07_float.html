@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>float 예제</title>
+	<style>
+		/* 
+		p.141 
+		float
+		- 요소를 왼쪽, 오른쪽으로 배치할 때 사용하는 속성
+		  - inline, inline-block, block을 무시하고 왼쪽, 오른쪽으로 배치
+			- 배치할 때 공백을 없애줌
+		- 요소에 width가 지정되어 있지 않으면 요소의 크기가 자식 요소 크기로 변경
+		- float을 적용한 요소의 부모요소는 높이가 안잡힐 수 있음
+
+		clear
+		- float 속성이 적용된 요소가 있으면 다음 요소에 영향을 미치는데 이를 초기화 하는 속성
+		- float 속성이 적용된 요소의 부모 요소에 적용하고, 선택자로 ::after를 사용
+		- 값
+		  - left : 왼쪽 float 요소의 높이를 계산한 후 배치
+			- right : 오른쪽 float 요소의 높이를 계산한 후 배치
+			- both : 왼쪽과 오른쪽 float 요소의 높이 중 긴 요소를 기준으로 배치
+		*/
+		.box{ text-align: right;}
+		.box>span{ background-color: yellow;}
+
+		.box2>div{ float: left; background-color: yellow;}
+		.container2{ height: 100px;}
+		.box2{ background: gray;}
+
+		.box3>div{ float: left; background-color: yellow;}
+		.box3{ background: gray;}
+		.box3::after{ content: ''; clear: both; display: block;}
+	</style>
+</head>
+<body>
+	<div class="container1">
+		<h1>text-align으로 오른쪽 정렬</h1>
+		<div class="box">
+			<span>안녕</span>
+			<span>하세요.</span>
+			<span>만나서 반갑습니다.</span>
+		</div>
+	</div>
+	<div class="container2">
+		<h1>float으로 오른쪽 정렬(clear 적용 안함)</h1>
+		<div class="box2">
+			<div>안녕</div>
+			<div>하세요.</div>
+			<div>만나서 반갑습니다.</div>
+		</div>
+		<div>제 이름은 홍길동입니다.</div>
+	</div>
+
+	<div class="container3">
+		<h1>float으로 오른쪽 정렬(clear 적용 함)</h1>
+		<div class="box3">
+			<div>안녕</div>
+			<div>하세요.</div>
+			<div>만나서 반갑습니다.</div>
+		</div>
+		<div>제 이름은 홍길동입니다.</div>
+	</div>
+</body>
+</html>
