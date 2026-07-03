@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자</title>
+	<style>
+		#item1{ color: red;}
+		#item2{ background: yellow;}
+		#item3:hover{ font-weight: bold;}
+		#item4{ text-decoration: underline; background: yellow;}
+
+		.color-red{ color: red;}
+		.bg-yellow{ background: yellow;}
+		.hover-bold:hover{font-weight: bold;}
+		.underline{ text-decoration: underline;}
+
+		.list3 > li:first-of-type{ color: red;}
+		/* even : 짝수(2n), odd : 홀수(2n+1)  */
+		.list3 > :nth-child(even){background: yellow;}
+		.list3 > li:nth-of-type(3):hover { font-weight: bold;}
+		.list3 > :last-child{ text-decoration: underline;}
+	</style>
+</head>
+<body>
+	
+	<h1>선택자 예제</h1>
+	<!-- 
+	1에는 글자가 빨강, 4에는 글자가 밑줄
+	2와 4는 배경이 노랑, 3은 hover하면 글자가 두껍게 되도록 작업을 해보세요
+	-->
+	<ul class="list1">
+		<li id="item1">1</li>
+		<li id="item2">2</li>
+		<li id="item3">3</li>
+		<li id="item4">4</li>
+	</ul>
+	<ul class="list2">
+		<li class="color-red">1</li>
+		<li class="bg-yellow">2</li>
+		<li class="hover-bold">3</li>
+		<li class="bg-yellow underline">4</li>
+	</ul>
+	<ul class="list3">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

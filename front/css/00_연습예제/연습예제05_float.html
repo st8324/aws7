@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>float 예제</title>
+	<style>
+		.container{ border: 3px solid red;}
+		.container>div:first-of-type{ background: blue;}
+		.container>div:last-of-type{ background: green;}
+		.box{ height: 100px; float: left; width: 50%;}
+		.container::after{ clear: both; content: ''; display: block;}
+	</style>
+</head>
+<body>
+	<!-- box의 높이는 100px로 정하고, container 안에 두 박스가 반반씩 배치되도록 작성하세요. -->
+	<div class="container">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+	</div>
+</body>
+</html>

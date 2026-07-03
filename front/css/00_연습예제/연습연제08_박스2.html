@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 연습예제</title>
+	<style>
+		/* 
+		block태그들은 너비가 기본값이 100% => 부모 컨텐츠 크기를 가져옴
+		*/
+		.container{ border: 3px solid black;}
+		.wrap{padding: 10px;}
+		.box{height: 50px; background: red;}
+		.box~.box{ margin-top: 10px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wrap">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+	</div>
+</body>
+</html>
