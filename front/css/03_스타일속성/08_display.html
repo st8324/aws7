@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>display 예제</title>
+	<style>
+		/* 
+		display
+		- 요소의 display를 변경하는 속성
+		- 값
+		  - inline : 현재라인, 크기변경 X, 
+			- inline-block : 현재라인, 크기변경 O,
+			- block : 새라인, 크기변경 O, 
+			- none : 요소를 안보이게 함
+			- flex,grid : 나중에 반응형 할 때 따로 정리 */
+			.container{ border: 3px solid black; padding: 10px; margin-bottom: 10px;}
+			.box1{
+				background: yellow; display: inline;
+				/* 아래 너비/높이는 적용 안됨 */
+				width: 200px; height: 50px; 
+			}
+			.box2{
+				background: yellow; display: inline-block;
+				width: 200px; height: 50px; 
+			}
+			.box3{
+				background: yellow; display: block;
+				width: 200px; height: 50px; 
+			}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>div를 inline으로</h1>
+		<div class="box1">div태그 - inline 적용</div>
+		<div class="box1">div태그 - inline 적용</div>
+		<div class="box1">div태그 - inline 적용</div>
+	</div>
+
+	<div class="container">
+		<h1>div를 inline-block으로</h1>
+		<div class="box2">div태그 - inline-block 적용</div>
+		<div class="box2">div태그 - inline-block 적용</div>
+		<div class="box2">div태그 - inline-block 적용</div>
+	</div>
+
+	<div class="container">
+		<h1>div를 block으로</h1>
+		<div class="box3">div태그 - block 적용</div>
+		<div class="box3">div태그 - block 적용</div>
+		<div class="box3">div태그 - block 적용</div>
+	</div>
+</body>
+</html>
