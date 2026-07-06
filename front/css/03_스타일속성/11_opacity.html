@@ -32,6 +32,21 @@
 		.box:hover{
 			opacity: 0.3;
 		}
+		.container2{
+			height: 50px; line-height: 50px; font-weight: bold; font-size: 30px;
+			background-color: red; 
+			opacity: 0.5;
+		}
+		.box2{
+			/* 여기서 투명도를 1로 해도 부모가 0.5이어서 실제 적용되는 투명도는 부모보다 높을 수 없음 */
+			opacity: 1;
+		}
+		.container3{
+			height: 50px; line-height: 50px; font-weight: bold; font-size: 30px;
+			/* 배경색에 있는 rgba는 색상에만 적용=>자식 컨텐츠에 영향 X */
+			background-color: rgba(255,0,0,0.5); 
+		}
+
 	</style>
 </head>
 <body>
@@ -41,6 +56,17 @@
 			<h1>안녕하세요. </h1>
 			<div class="box"></div>
 		</div>
+	</div>
+	<h1>투명도 예제2</h1>
+	<!-- 
+	자식 요소의 투명도는 부모보다 선명할 수 없다
+	=> 부모의 투명도가 0.5이면 자식의 투명도를 1로 해도 1처럼 진하게 안 보임
+	-->
+	<div class="container2">
+		<div class="box2">opacity</div>
+	</div>
+	<div class="container3">
+		<div class="box3">배경 색상에 rgba() 이용</div>
 	</div>
 </body>
 </html>
