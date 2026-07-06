@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>그림자 속성</title>
+	<style>
+		/* 
+		text-shadow : p.159
+		- 글자에 그림자 효과를 적용
+		- none : 적용 안함
+		- 수평 수직 번짐 색상 순서로 값을 지정
+		- 여러 그림자 효과를 ,를 이용하여 한번에 적용
+		*/
+		.ts1{
+			text-shadow: 5px 5px 5px red;
+		}
+		.ts2{
+			color: white;
+			text-shadow: 0 0 1px black;
+		}
+		.ts3{
+			color: white;
+			text-shadow: 0 0 1px black, 3px 3px 3px blue;
+		}
+
+		/* 
+		box-shadow 
+		- 박스에 그림자 효과를 적용
+		- 수평 수직 흐림 번짐 [inset] 순서로 값을 지정
+		  - 흐림은 그림자 선명도
+			- 번짐은 퍼지는 정도 
+			- inset을 쓰면 그림자가 박스 안쪽으로 적용
+		- 네이버에서는 테두리를 박스 그림자로 사용하는 경우 많음 => 너비에 미포함 */
+		
+		.container > div{
+			width: 100px; height: 100px; background: yellow;
+			margin-bottom: 30px;
+		}
+		/* 흐림 0, 번짐 10px */
+		.bs1{ box-shadow: 10px 10px 0 10px red;}
+		/* 흐림 10px, 번짐 0px */
+		.bs2{ box-shadow: 10px 10px 10px 0 red;}
+		/* 박스 그림자로 테두리 흉내내기 */
+		.bs3{ box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);}
+	</style>
+</head>
+<body>
+	<h1 class="ts1">그림자 효과1</h1>
+	<h1 class="ts2">그림자 효과2</h1>
+	<h1 class="ts3">그림자 효과3</h1>
+	<div class="container">
+		<h1>박스 그림자 예제</h1>
+		<div class="bs1"></div>
+		<div class="bs2"></div>
+		<div class="bs3"></div>
+	</div>
+</body>
+</html>
