@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transform 속성 예제</title>
+	<style>
+		/* 
+		transform(p.170~176)
+		- 요소를 변형하는 속성
+		- 확대, 축소, 회전, 비틀기, 이동
+		- 값으로 함수가 옴(확대하는 함수, 축소하는 함수, 회전하는 함수 등)
+
+		translate?
+		- 주어진 방향으로 이동하는 함수
+		- ?에 들어가는 값
+		  - X : x축 방향으로 이동. translateX(-50%)는 요소 너비의 반만큼 앞으로 이동
+			- Y : y축 방향으로 이동.
+			- Z : z축 방향으로 이동. 
+			- 없음 : x,y축 방향으로 이동
+			- 3d : x,y,z축 방향으로 이동
+
+		p.174
+		- z축 관련 효과를 보려면 persprective 속성을 부모 요소에 적용해야 함
+		*/
+		.box{
+			width: 200px; height: 100px; border: 3px solid black; background: white;
+			margin: 10px 0;
+		}
+		.container{
+			background-color: yellow; padding: 20px; margin-bottom: 20px;
+			perspective: 500px;
+		}
+		/* 너비의 반만큼 우측으로 이동 */
+		.t-x{ transform: translateX(50%);}
+		.t-xy{ transform: translate(200px, 30px);}
+		/* 
+		값이 양수면 눈과 가까워져서 커보임. 음수면 눈과 멀어져서 작아져보임. 
+		값이 있는 변화가 없는 경우 => 부모 요소에 perspective 값을 설정하지 않음
+		 */
+		.t-z{ transform: translateZ(-100px);}
+	</style>
+	<style>
+		/* 
+		scale?
+		- 요소를 확대/축소하는 함수
+		- X,Y,없음, Z, 3d
+		  - Z축 두께는 0이기 때문에 효과가 거의 없음
+		- 1보다 크면 확대, 1보다 작으면 축소
+		*/
+		.sc-x{ transform: scaleX(1.3);}
+		.sc-xy{transform: scale(2, 1.1);}
+	</style>
+	<style>
+		/* 
+		rotate?
+		- 요소를 회전 시키는 함수
+		- X, Y, 없음, Z, 3d
+		  - X : X축을 기준으로 회전
+		*/
+		.r-x{	transform: rotateX(45deg);	}
+		.r-y{ transform: rotateY(45deg);}
+		.r-xy{ transform: rotate(10deg);}
+		.r-z{ transform: rotateZ(10deg);}
+	</style>
+	<style>
+		/* 
+		skew?
+		- 요소를 비틀어서 모양이 바뀌는 함수
+		- X,Y, 없음
+		*/
+		
+		.sk-x{ transform: skewX(15deg); margin-bottom: 50px;}
+		.sk-y{ transform: skewY(15deg);}
+		.naver-bar{
+			width: 1px; height: 16px; background: red;
+			transform: skewX(-15deg);
+		}
+	</style>
+	<style>
+		/* 
+		transform-origin
+		- transform을 이용해서 요소를 변경시킬 때 기준점을 설정
+		- 기본값 : center center
+
+		transform-style
+		- 여러가지 변형을 동시에 하는 경우 부모 요소에 적용한 3d를 하위 요소에 적용하는 속성
+		- flat : 하위 요소를 평면으로 처리
+		- perserve-3d : 하위 요소에 3d효과를 적용
+		*/
+		.origin-center{ transform: rotateZ(15deg);}
+		.origin-zero{ transform: rotateZ(15deg); transform-origin: 0 0;}
+		
+		.p-none { perspective: none;}
+		
+		.flat-container, .preserve-container{
+			display: inline-block; 
+			border: 10px solid black;
+			transform: perspective(500px) rotateY(-60deg);
+		}
+
+		.box1{
+			width: 100px; height: 100px; background-color: red;
+			transform: perspective(500px) rotateY(60deg);
+		}
+		.flat-container{ transform-style: flat;}
+		.preserve-container{ transform-style: preserve-3d;}
+	</style>
+</head>
+<body>
+	<h1>transform : translate 예제</h1>
+	<div class="container">
+		<div class="box t-x">x축 이동</div>
+		<div class="box t-xy">x,y축 이동</div>
+		<div class="box t-z">z축 이동</div>
+	</div>
+	<hr>
+	<h1>transform : scale 예제</h1>
+	<div class="container">
+		<div class="box">기본 박스</div>
+		<div class="box sc-x">x축 확대</div>
+		<div class="box sc-xy">x,y축 확대</div>
+	</div>
+	<h1>transform : rotate 예제</h1>
+	<div class="container">
+		<div class="box r-x">x축</div>
+		<div class="box r-y">y축</div>
+		<div class="box r-xy">xy축</div>
+		<div class="box r-z">z축</div>
+	</div>
+	<h1>transform : skew 예제</h1>
+	<div class="container">
+		<div class="box sk-x">x축</div>
+		<div class="box sk-y">y축</div>
+		<div class="naver-bar"></div>
+	</div>
+	<h1>transform-origin 예제</h1>
+	<div class="container">
+		<div class="box origin-center">기본 중심 회전</div>
+		<div class="box origin-zero">0,0 회전</div>
+	</div>
+	<h1>transform-style 예제</h1>
+	<div class="container p-none">
+		<div class="flat-container">
+			<div class="box1">flat</div>
+		</div>
+		<div class="preserve-container">
+			<div class="box1">preserve-3d</div>
+		</div>
+	</div>
+</body>
+</html>
