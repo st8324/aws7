@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>z-index 예제</title>
+	<style>
+		/* 
+		z-index(p.155)
+		- 요소들이 서로 겹쳤을 때 누구를 위로 보낼지 결정하는 속성
+		- 숫자가 클수록 위로 올라감
+		- 형제 요소들이 z-index가 같으면 코드 위치상 뒤에 있는 요소가 위로 올라감
+		*/
+		.box{ 
+			width: 100px; height: 200px; background-color: white;
+			border: 3px solid black;
+			/* box들을 겹치게 하기 위해서 */
+			position: absolute;
+		}
+		/* top, left를 이용하여 겹치면서 겹치지 않은 부분이 생기도록 조절 */
+		.box1{ top: 0; left: 0; z-index: 2;}
+		.box2{ top: 50px; left: 50px; z-index: 1;}
+		.box3{ top: 100px; left: 100px; z-index: 0;}
+
+		.container1{ 
+			/* 박스들의 기준이 되기 위해 */
+			position: relative;
+			/* 다음 예제와 겹치지 않게 위해 높이를 넉넉히 지정 */
+			height: 400px;
+		}
+		.pos-static{ 
+			background: white; border: 3px solid black; height: 150px; 
+			width: 300px;
+			/* position : absolute보다 위에 배치하기 위해 높은 숫자 지정 => 의미 없음 */
+			z-index: 1000;
+		}
+		.pos-absolute{
+			background: white; border: 3px solid black; height: 150px; 
+			width: 300px;
+			/* position을 지정 후 겹친 내용의 뒤를 확인하귀 위해 조절*/
+			position: absolute; top: 50px; left: 100px;
+			/* position : static보다 아래에 배치하기 위해 낮은 숫자 지정 => 의미 없음 */
+			z-index: 0;
+		}
+		.container2{
+			/* pos-absolute의 기준이 되기 위해 */
+			position: relative; 
+			/* 다음 예제와 겹치지 않게 하기위해 */
+			height: 400px;
+		}
+
+		.wrap1{
+			height: 100px; width: 300px; background: yellow;
+			/*wrap1과 wrap2를 겹치게 하기 위해 모두 동일한 position을 지정  */
+			position: absolute;
+			top: 0; left: 0;
+			
+			z-index: 10;
+			/* 자식 요소들 시작지점을 조절 */
+			padding: 0 20px 20px 20px;
+		}
+		.wrap2{
+			height: 100px; width: 300px; background: rgb(0, 255, 221);
+			/*wrap1과 wrap2를 겹치게 하기 위해 모두 동일한 position을 지정  */
+			position: absolute;
+			top: 50px; left: 50px;
+			
+			z-index: 20;
+			/* 자식 요소들 시작지점을 조절 */
+			padding: 0 20px 20px 20px;
+		}
+		.container3{ position: relative;}
+		.box4, .box5{
+			width: 100%; height: 100%; 
+			background-color: gray;
+			z-index: 100;
+		}
+		/* 자식 요소의 z-index가 아무리 높아도 부모 요소의 z-index가 낮으면 아래로 배치 
+		=> 사촌끼리 비교하는게 의미 없음
+		*/
+		.box4{ z-index: 1000;}
+	</style>
+</head>
+<body>
+	<h1>형제들 사이에서 z-index</h1>
+	<div class="container1">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+		<div class="box box3">3</div>
+	</div>
+	<h1>position이 다른 요소들 사이에서 z-index</h1>
+	<div class="container2">
+		<div class="pos-absolute">position : absolute</div>
+		<div class="pos-static">position : static</div>
+	</div>
+	<h1>사촌사이에서 z-index : 사촌들 사이에서 비교하는게 의미 없음</h1>
+	<div class="container3">
+		<div class="wrap1">
+			부모 z-index 낮음
+			<div class="box4">4 : z-index 높음</div>
+		</div>
+		<div class="wrap2">
+			부모 z-index 높음
+			<div class="box5">5 : z-index 낮음</div>
+		</div>
+	</div>
+</body>
+</html>
