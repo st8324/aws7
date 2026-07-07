@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>flex 속성</title>
+	<!-- 
+	p.208~235
+	display : flex
+	- 관련 속성이 많음
+	- 반응형에 적용할 수 있음
+	- 자식 요소들을 부모 요소에 욲여 넣음. 비율에 맞춰서
+
+	용어 정리
+	- 컨테이너 : flex가 적용된 요소 (ul태그)
+	- 아이템 : flex가 적용된 요소의 자식 요소 (li태그)
+	- 주축 : 아이템이 정렬되는 방향
+	- 교차축 : 주축의 수직 방향
+	  - 주축이 가로면 교차축은 세로
+		- 주축이 세로면 교차축을 가로
+
+	컨테이너에 적용되는 속성들
+	flex-direction
+	- 주축 방향 설정
+	- row : 기본값, 좌->우
+	- row-reverse : 우->좌
+	- column : 상->하
+	- column-reverse : 하->상
+
+	flex-wrap
+	- 아이템들 크기의 합이 컨테이너 크기보다 큰 경우 한줄에 할지 여러줄에 할지를 결정하는 속성
+	- nowrap : 기본값. 한줄
+	- wrap : 여러줄. 교차축 정방향으로 아이템 배치
+	- wrap-reverse : 여러줄. 교차축 역방향으로 아이템 배치
+
+	flex-flow
+	- flex-direction flex-wrap을 한번에 적용하는 속성
+
+	justify-content
+	- 주축 방향으로 아이템을 배치하는 방법을 지정
+	- flex-start : 기본값. 주축 시작을 기준으로 배치
+	- flex-end : 주축 끝을 기분으로 배치
+	- center : 가운데
+	- space-between 
+		- 첫번째/마지막 아이템을 끝에 배치한 후 아이템 사이의 간격을 일정하게 배치
+		- 첫번째 아이템의 왼쪽과 마지막 아이템의 오른쪽 간격이 없음
+	- space-around
+	  - 모든 아이템의 좌우 간격이 일정하도록 배치
+		- 아이템 사이의 간격이 두꺼움
+	- space-evenly
+	  - 모든 여백의 크키가 동일
+
+	align-items
+	- 교차축 방향으로 아이템 배치 방법을 설정하는 속성
+	- 조건
+	  - flex-wrap이 nowrap이 아닌 경우 의미가 있음
+	- flex-start : 기본값. 교차축 시작을 기준으로 배치
+	- flex-end : 교차축 끝을 기준으로 배치
+	- center : 교차축 가운데 배치
+	- baseline : 문자 기준선에 맞춰 정렬
+	- stretch : 교차축을 채우기 위해 아이템을 늘림
+	  - 아이템들의 height가 정해져 있지 않은 경우 적용
+
+	align-content
+	- 교차축 방향으로 정렬 방법을 설정하는 속성
+	- justify-content에서 사용하는 값 모두 사용 가능
+
+	아이템에 적용하는 속성
+	align-self
+	- 특정 아이템만 align-items를 다르게 적용
+	-->
+	<style>
+		*{ padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		a{text-decoration: none; color: black;}
+		header li{
+			width: 200px;  border: 3px solid black;
+			background-color: white;
+			/* height: 50px; */
+		}
+		header li+li{
+			/* margin-left: -3px; */
+		}
+		header ul{
+			background-color: yellow;
+			margin-top: 100px;
+			height: 500px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			/* align-content: center; */
+		}
+		header li:last-of-type{
+			align-self: flex-end;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>메뉴1</li>
+				<li>메뉴2</li>
+				<li>메뉴3</li>
+				<li>메뉴4</li>
+			</ul>
+		</nav>
+	</header>
+</body>
+</html>
