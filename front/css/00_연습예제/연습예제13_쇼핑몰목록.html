@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>쇼핑몰 목록 예제</title>
+	<style>
+		.link-mall{
+			color: black; text-decoration: none;
+			font-size: 20px;
+			line-height: 20px;
+			float: left;
+		}
+		.link-mall:hover{
+			text-decoration: underline;
+		}
+		/* float이 적용된 요소의 부모 요소에 다음 코드를 적용해야 부모 높이가 잡힘 */
+		.clearfix::after{
+			content: ''; display: block; clear: both;
+		}
+		.dot{
+			padding-left: 20px; 
+			/* 둥근 점을 배치할 때 기준이 되기 위해 */
+			position: relative;
+		}
+		.dot::before{
+			/* before나 after에 반드시 들어가야함 */
+			content: ''; 
+			/* 둥근점 만들기 */
+			width: 4px; height: 4px; background: black;
+			border-radius: 50%;
+			/* 점 배치 */
+			position: absolute; top: 8px; left: 8px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wrap clearfix">
+			<a href="" class="link-mall">쿠팡</a>
+			<a href="" class="link-mall dot">G마켓</a>
+			<a href="" class="link-mall dot">옥션</a>
+		</div>
+	</div>
+</body>
+</html>
