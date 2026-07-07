@@ -33,6 +33,20 @@
 			position: absolute; top: 8px; left: 8px;
 		}
 	</style>
+
+	<style>
+		.wrap-container .link-mall{ float: none;}
+		.wrap-container{
+			display: flex;
+			justify-content: flex-start;
+		}
+		.dot2{
+			width: 4px; height: 4px; background: black;
+			border-radius: 50%;
+			margin: 8px 8px 0;
+		}
+	</style>
+
 </head>
 <body>
 	<div class="container">
@@ -40,6 +54,13 @@
 			<a href="" class="link-mall">쿠팡</a>
 			<a href="" class="link-mall dot">G마켓</a>
 			<a href="" class="link-mall dot">옥션</a>
+		</div>
+		<div class="wrap wrap-container">
+			<a href="" class="link-mall">쿠팡</a>
+			<span class="dot2"></span>
+			<a href="" class="link-mall">G마켓</a>
+			<span class="dot2"></span>
+			<a href="" class="link-mall">옥션</a>
 		</div>
 	</div>
 </body>
