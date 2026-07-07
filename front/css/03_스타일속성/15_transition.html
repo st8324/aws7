@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transition 예제</title>
+	<style>
+		/* 
+		transition(p.177~180)
+		- 요소의 스타일이 변경되는 걸 감지해서 서서히 변하도록 해줌
+		- 예시 : 네이버 쇼핑에서 이미지를 hover 이미지가 서서히 확대
+		- trainsition-*을 한번에 적용한 단축 속성
+		  - property, duration, timing-function delay
+
+		transition-property
+		- 변화를 감지할 속성을 지정
+		- 값
+		  - all : 모든 속성을 감지
+			- none : 아무 속성도 감지하지 않음
+			- 속성명 : 해당 속성만 감지. 여러개인 경우 ,로 구분
+
+		transition-duration
+		- 변화가 지속되는 시간
+		- 단위 ms, s
+		- 여러 속성인 경우 ,로 구분
+
+		transition-timing-function
+		- 트랜지션이 진행되는 구간별 시간을 지정
+		- linear, ease, ease-in, ease-out, ease-in-out
+		- cubic-bezier(n,n,n,n) : 각 구간별 속도를 지정
+
+		transition-delay
+		- 트랜지션이 두개 이상 있는 경우 하나의 트랜지션이 끝나고 다음 트랜지션이 시작되는 시간
+		- 단위 ms, s
+		*/
+		.box1, .box2{
+			width: 100px; height: 100px; background-color: yellow;
+			/* 글자를 좌우, 상하 가운데 배치 */
+			line-height: 100px; text-align: center;
+			/* 글자 잘보이게 */
+			font-size: 20px; font-weight: bold;
+		}
+		.tr1:hover{
+			/* 글자크기와 글자색 변경 */
+			font-size: 50px;
+			color: red;
+		}
+		.tr1{
+			transition-property: font-size, color;
+			transition-duration: 500ms, 500ms;
+			transition-delay: 0s, 0s;
+			/* 위 3줄이 아래 1줄과 같음 */
+			transition: font-size 500ms 0s, color 500ms;
+		}
+		.box2{
+			/* 박스들 위아래를 구분하기 위해 */
+			margin-bottom: 20px;
+			/* 박스들을 오른쪽으로 옮기기 위해 */
+			position: relative;
+			left: 0;
+			/* 박스 움직임 감지 */
+			transition: left 5s;
+		}
+		.container2:hover .box2{
+			left: calc(100% - 100px);
+		}
+		.timing1{ transition-timing-function: linear;}
+		.timing2{ transition-timing-function: ease;}
+		.timing3{ transition-timing-function: ease-in;}
+		.timing4{ transition-timing-function: ease-in-out;}
+	</style>
+</head>
+<body>
+	<h1>transition 예제</h1>
+	<div class="container">
+		<div class="box1 tr1">꽝</div>
+	</div>
+	<h1>transition-timing-function 예제</h1>
+	<div class="container2">
+		<div class="box2 timing1">linear</div>
+		<div class="box2 timing2">ease</div>
+		<div class="box2 timing3">ease-in</div>
+		<div class="box2 timing4">ease-in-out</div>
+	</div>
+</body>
+</html>
