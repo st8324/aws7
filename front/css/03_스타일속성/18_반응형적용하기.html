@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 적용하기</title>
+	<style>
+		/* 
+		p.201 
+		반응형
+		- 웹을 보는 장치에 따라 보이는 화면을 다르게 구성하는 것
+		- m.naver.com
+		- github.com
+
+		반응형 적용 방법
+		1. style 태그 안에 @media 쿼리를 이용
+		2. style, link 태그에 media 속성을 이용
+
+		적용방법1
+		<스타일>
+			@media screen and (max-width:최대화면크기) and (min-width:최소화면크기){
+				선택자{
+					속성 : 값; 속성 : 값;
+				}
+			}
+		</스타일>
+
+		적용방법2 
+		<link href="xxx.css" media="screen and (max-width:최대화면크기) and (min-width:최소화면크기)">
+		*/
+		/* 
+		화면이 작을 때(600px이하) 한줄에 박스가 1개씩
+		화면이 보통일 때(600px이상 1000px이하) 한줄에 박스가 3개씩
+		화면이 클 때(1000px이상) 한줄에 박스가 6개씩
+		*/
+	</style>
+	<style>
+		.box{
+			height:100px; background: yellow; 
+			/* 화면이 작을 때(600px이하) 너비 */
+			width: 100%;
+
+			float: left;
+		}
+		/* 
+		box 클래스들 중 짝수번째 X : 잘못된 해석
+		짝수번째 요소들 중 클래스가 box가 있음? O : 올바른 해석
+		*/
+		.box:nth-child(2n){
+			background: red;
+		}
+		/*
+		@media screen and (min-width:600px) {
+			.box{
+				width: 33.333%;
+			}
+		}
+		@media screen and (min-width:1000px) {
+			.box{
+				width: 16.666%;
+			}
+		}
+		*/
+		
+		/* @media screen and (max-width:600px) {
+			.box{ width: 100%; }
+		}
+		@media screen and (min-width:1000px) {
+			.box{ width: 16.666%; }
+		}
+		@media screen and (min-width:600px) and (max-width:1000px) {
+			.box{ width: 33.333%; }
+		} */
+	</style>
+	<link rel="stylesheet" href="18_반응형적용하기_L.css" media="screen and (min-width:1000px)">
+	<link rel="stylesheet" href="18_반응형적용하기_M.css" media="screen and (min-width:600px) and (max-width:1000px)">
+	<link rel="stylesheet" href="18_반응형적용하기_S.css" media="screen and (max-width:600px)">
+</head>
+<body>
+	<div class="container">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+	</div>
+</body>
+</html>
