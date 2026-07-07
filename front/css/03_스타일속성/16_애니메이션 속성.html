@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 속성 예제</title>
+	<style>
+		/* 
+		p.181~184
+		애니메이션 적용 방법
+		1. 애니메이션을 등록
+		2. 등록된 애니메이션을 적용
+
+		애니메이션 등록
+		@keyframes 애니메이션명{
+			지점1{
+				속성명 : 값;
+				속성명 : 값; 
+			}
+			지점2{
+				속성명 : 값;
+				속성명 : 값;
+			}
+			...
+		}
+			- 지점은 0%~100% 사이의 값. 또는 from(0%) to(100%)를 사용
+
+		애니메이션 적용 방법
+		- 애니메이션 관련 속성을 이용
+
+		animation-name
+		- 적용할 애니메이션 이름
+
+		animation-duration
+		- 애니메이션 적용 시간
+		- ms, s
+
+		animation-direction
+		- 애니메이션을 반복할 때 진행 방향을 설정
+		- nomal : 기본, 처음부터
+		- alternate : 역순
+
+		animation-iterator-count
+		- 반복횟수 
+		- 숫자 : 숫자만큼 반복, infinite : 무한 반복
+
+		animation-timing-function
+		- 애니메이션 구간별 수행 속도
+
+		animation-fill-mode
+		- 애니메이션이 끝난 후 또는 시작 전의 상태 지정
+		- none : 아무것도 적용하지 않음
+		- forward : 애니메이션이 끝난 후 키프레임 스타일 유지(마지막 장면 유지)
+		- backward : 애니메이션이 시작하기 전 첫번째 키프레임 스타일을 유지(첫 장면 유지)
+		- both : 애니메이션이 시작하기전에는 첫번째 키프레임 스타일을, 끝난후에는 마지막 키프레임 스타일을 유지
+
+		animation-delay
+		- 애니메이션 시작 전 딜레이 시간
+
+		animation-play-state
+		- 애니메이션 재생 여부
+		- hover와 같이 특정 상황에서 일시정지 시킬 때 사용
+		- running : 기본값, 재생, paused : 일시정지
+
+		animation
+		- name duration timing-function delay iterator-count direction fill-mode를 한번에 적용
+
+		*/
+		@keyframes color {
+			0%{
+				color: black;
+			}
+			50%{
+				color: red;
+			}
+			100%{
+				color: blue;
+			}
+		}
+		@keyframes fontSize {
+			from{
+				font-size: 30px;
+			}
+			to{
+				font-size: 100px;
+			}
+		}
+		.box{
+			height: 100px; line-height: 100px; font-size: 30px; font-weight: bold;
+			background-color: yellow; margin-bottom: 10px;
+		}
+		.color{
+			animation-name: color;
+			animation-duration: 5s;
+			animation-timing-function: linear;
+			/* 
+			normal : 검~빨~파-검~빨~파
+			alternate : 검~빨~파~빨~검~빨~파
+			*/
+			animation-direction: alternate;
+			animation-iteration-count: infinite;
+			animation-fill-mode: both;
+			animation-delay: 0s;
+		}
+		.font-size{
+			animation: fontSize 5s linear 0s infinite alternate both;
+			cursor: pointer;
+		}
+		.font-size:hover{
+			animation-play-state: paused;
+		}
+		/* 
+		cursor : 마우스 커서 모양을 지정하는 속성
+		*/
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box color">꽝</div>
+		<div class="box font-size">꽝</div>
+	</div>
+</body>
+</html>
