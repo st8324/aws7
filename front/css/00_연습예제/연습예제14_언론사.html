@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>네이버 언론사 예제</title>
+	<style>
+		.container{
+			width: 150px; height: 150px; overflow: hidden;
+			/* 박스 그림자로 테두리 효과 적용 */
+			box-shadow: 0 0 2px red; 
+			/* 둥근 테두리 */
+			border-radius: 4px;
+			/* 클릭의 기준이 되기 위해 */
+			position: relative;
+		}
+		.box{
+			/* 박스를 absolute로 container 전체를 감싸도록 배치 */
+			position: absolute; 
+			left: 0; right: 0;
+			top: 0; bottom: 0;
+			/* 배경 흰색으로 설정. 투명이면 이미지 보일 수 있음 */
+			background: white;
+			/* 글자를 위 아래 가운데 배치하기 위해 패딩으로 위아래 여백 조절 */
+			padding: 60px 0; 
+			/* 한 줄을 30px로 고정하여 높이를 맞춤 */
+			line-height: 30px;
+			font-size: 18px;
+			/* 글자 좌우 가운데 정렬 */
+			text-align: center;
+			/* 처음에 박스가 안보이도록 */
+			display: none;
+		}
+		.container:hover .box{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="../../img/강아지.jfif" alt="강아지" width="150" height="150">
+		<div class="box">클릭</div>
+	</div>
+</body>
+</html>
