@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>입출력</title>
+</head>
+<body>
+	
+
+	<script>
+		/*
+		문자열
+		- 여러 글자
+		- ''(따옴표), ""(쌍따옴표), ``(백틱) 사이에 있는 모든 글자들
+
+
+		js에서 제공하는 간단한 입력 기능들
+		1. confirm(문자열A)
+		- 확인, 취소 버튼이 있는 알림창. 알림문구는 문자열A
+		- 확인을 누르면 true(참), 취소를 누르면(false)를 줌
+		
+		2. prompt(문자열A, 초기값)
+		- 문자열A를 알림창에 띄우고 알림창에서 값을 입력받아 옴.
+		- 받아온 값은 문자열. 
+		  - 숫자 입력 => '숫자'
+		*/ 
+
+		// let moveLogin = confirm('로그인 페이지로 이동하겠습니까?')
+		// console.log(moveLogin)
+
+		// let age = prompt("당신의 나이는?", 20)
+		// console.log(age)
+
+		/*
+		js에서 제공하는 간단한 출력 기능
+		1. console.log(변수 또는 값)
+		- 브라우저 개발자 도구 콘솔창에 변수 또는 값을 출력
+		- ,를 이용해서 여러 값을 출력
+
+		2. alert(값 또는 변수)
+		- 변수 또는 값을 알림창에 띄움
+
+		3. document.write(문자열)
+		- 브라우저 화면에 문자열을 출력
+		- html 코드로 된 문자열을 그대로 적용
+		*/
+		console.log(1, '안녕', 1.23);
+		let name = "홍길동" ;
+		alert(name + '님 환영합니다.');
+
+		document.write('안녕하세요.')
+		document.write('<h1>안녕하세요.</h1>')
+
+	</script>
+</body>
+</html>
