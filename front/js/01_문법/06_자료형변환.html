@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자료형변환</title>
+
+</head>
+<body>
+	
+	<script>
+		/* 
+		자료형 변환
+		- 자료형을 다른 자료형으로 변환
+		1. 문자열 => 정수
+		- parseInt(문자열)
+		- 왼쪽부터 시작해서 정수로 바꿀 수 있는 부분만 바꿈
+		2. 문자열 => 실수
+		- parseFloat(문자열)
+		- 왼쪽부터 시작해서 실수로 바꿀 수 있는 부분만 바꿈
+		3. 문자열 => 숫자
+		- Number(문자열)
+		- 숫자가 아닌 값이 있으면 NaN을 반환
+		4. 숫자 => 문자열
+		- "" + 숫자
+		*/
+		let str1 = "123.45";
+		let str2 = "123a";
+		let str3 = "123";
+		//pasrseInt(str1)
+		document.write(`parseInt('${str1}') : ${parseInt(str1)}<br>`)
+		document.write(`parseInt('${str2}') : ${parseInt(str2)}<br>`)
+		document.write(`parseInt('${str3}') : ${parseInt(str3)}<br>`)
+
+		document.write(`Number('${str1}') : ${Number(str1)}<br>`)
+		document.write(`Number('${str2}') : ${Number(str2)}<br>`)
+		document.write(`Number('${str3}') : ${Number(str3)}<br>`)
+	</script>
+</body>
+</html>

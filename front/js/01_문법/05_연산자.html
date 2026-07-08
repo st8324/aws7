@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연산자 예제</title>
+</head>
+<body>
+	
+	<script>
+		/*
+		연산자 종류
+		1. 산술 연산자
+		- +, -, *, /, %(나머지), **(제곱)
+		*/
+		document.write('<h1>산술연산자</h1>')
+		document.write(`2 + 3 = ${2 + 3}<br>`)
+		document.write(`2 - 3 = ${2 - 3}<br>`)
+		document.write(`2 * 3 = ${2 * 3}<br>`)
+		document.write(`2 / 3 = ${2 / 3}<br>`)
+		document.write(`2 % 3 = ${2 % 3}<br>`)
+		document.write(`2 **3 = ${2 **3}<br>`)
+
+		/* 
+		2. 비교 연산자 : 숫자 크기 비교
+		- <, >, <=, >=, ==, ===, !=, !==
+		- ==, != : 값만 봄. 타입을 신경 안씀
+		- ===, !== : 값과 타입을 함께 봄
+		*/
+		document.write('<h1>비교연산자</h1>')
+		document.write(`1 == '1'? ${1 == '1'}<br>`)
+		document.write(`1 === '1'? ${1 === '1'}<br>`)
+		document.write(`1 != '1'? ${1 != '1'}<br>`)
+		document.write(`1 !== '1'? ${1 !== '1'}<br>`)
+		/*
+		3. 논리 연산자
+		- 참과 거짓을 판별하는 연산자
+		- 거짓
+		  - false, 0, null, undefined, '', NaN
+		- 참
+			- 거짓이 아닌 모든 값
+		- && : and 연산자
+			- ~이고
+			- 둘다 참일때 참 => 하나라도 거짓이면 거짓
+			- 예시 : 
+			  - 성적이 90점이상이고 100점이하이면 A
+				- 내 성적이 85점이면 A? 
+				- 성적이 90점이상 && 성적이 100점이하
+		- || : or 연산자
+			- ~이거나 
+			- 하나라도 참이면 참 => 둘다 거짓이면 거짓
+			- 예시 : 
+				- 토익시험을 보려면 주민등록증이 있거나 운전면허증이 있거나 여권이 있으면 응시가 가능
+				- 주민등록증이 있다 || 운전면허증이 있다 || 여권이 있다 => 응시가능
+		- ! : not 연산자
+			- 반대
+			- 참이면 거짓, 거짓이면 참
+			- 예시 : 
+				- 여자가 아니다 => 남자다
+				  - !여자
+				- 성인이 아니다 => 미성년자다
+					- !성인
+		*/
+		let 면허증 = false;
+		let 민증 = true;
+		let 여권 = false;
+
+		document.write('<h1>논리 연산자</h1>')
+		document.write('보유 신분증 : 면허증 X, 민증 O, 여권 X<br>')
+		document.write(`신분증을 챙겼나요? ${면허증 || 민증 || 여권}<br>`)
+
+		let score = 85;
+		document.write(`${score}점은 A학점인가요?${score >= 90 && score <= 100}<br>`)
+		document.write(`${score}점은 B학점인가요?${score >= 80 && score < 90}<br>`)
+
+		let age = 20;//만 나이 20. 성인 : 19세이상 => age >= 19
+		document.write(`${age}살은 미성년자인가요? ${!(age >= 19)}<br>`);
+
+		/*
+		4. 대입연산자 =
+		- 오른쪽에 있는 값을 왼쪽에 저장
+		- a = 10; 가능하지만 10 = a; 불가능
+		*/
+
+	</script>
+</body>
+</html>
