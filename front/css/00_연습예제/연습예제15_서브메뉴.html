@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>서브 메뉴</title>
+	<style>
+		*{
+			/* 생각지 못한 여백이 들어가는 걸 방지하기 위해 */
+			margin: 0; padding: 0;
+			color: black;
+		}
+		ul{
+			/* 목록에서 마커 제거 */
+			list-style: none;
+		}
+		a{
+			/* 밑줄 제거 */
+			text-decoration: none;
+		}
+		.list-menu{
+			/* 
+			flex-wrap의 기본값이 nowrap이어서 메뉴들 크기가 1px씩 달라도 내려가지 않고 한 라인에 배치
+			=> 메뉴의 너비 계산 실수가 있어도 한줄에 배치하기 위해
+			 */
+			display: flex;
+		}
+		.item-menu{
+			width: 100%;
+			/* 서브메뉴의 기준이 되기 위해 */
+			position: relative;
+		}
+		.item-menu+.item-menu{
+			/* 메뉴가 겹치는 테두리가 두꺼워서 줄이기 위해 */
+			margin-left: -3px;
+		}
+		.title-menu{
+			/* 테두리를 여기에 적용한 이유 : 서브메뉴 테두리 라인과 맞추기 위해 */
+			border: 3px solid black;
+			/* line-height로 높이를 대신 하고 위아래를 기준으로 가운데 배치 */
+			line-height: 50px;
+			/* 글자 좌우 가운데 정렬 */
+			text-align: center;
+			cursor: pointer;
+		}
+		.item-menu:hover{
+			background-color: aliceblue;
+		}
+		.container-sub{
+			/* 서브메뉴를 편하게 배치하고, 다른 요소에 영향이 가지 않도록 하기 위해 */
+			position: absolute; bottom: 0;
+			/* 서브 메뉴를 높이만큼 내리기 위해 */
+			transform: translateY(100%);
+
+			width: 100%;
+
+			/* 초기 서브메뉴 감추기 */
+			display: none;
+		}
+		.item-sub{
+			/* 서브메뉴 테두리 지정 */
+			border: 3px solid red;
+		}
+		/* 서브 메뉴들 위아래 테두리가 겹쳐서 두꺼워 보이는 걸 해결하기 위해 */
+		.item-sub+.item-sub{
+			margin-top: -3px;
+		}
+		.link-sub{
+			/* 서브메뉴 여백을 선택해도 a태그가 지정되도록 */
+			display: block; 
+			/* line-height로 높이 대신 */
+			line-height: 50px;
+			/* 가운데 정렬 */
+			text-align: center;
+		}
+		.link-sub:hover{
+			background-color: aqua;
+		}
+		/* 메뉴를 hover하면 서브메뉴 보이기 */
+		.item-menu:hover .container-sub{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul class="list-menu">
+		<!-- 
+		서브메뉴를 메뉴안에 넣는 이유 : 
+		- 메뉴에 hover를 해서 서브메뉴를 보이게 한 후, 서브메뉴를 hover해도 서브메뉴가 사라지지 않게 하기 위해서-->
+		<li class="item-menu">
+			<div class="title-menu">메뉴</div>
+			<div class="container-sub">
+				<ul class="list-sub">
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li class="item-menu">
+			<div class="title-menu">메뉴</div>
+			<div class="container-sub">
+				<ul class="list-sub">
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li class="item-menu">
+			<div class="title-menu">메뉴</div>
+			<div class="container-sub">
+				<ul class="list-sub">
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+					<li class="item-sub">
+						<a href="" class="link-sub">서브메뉴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</body>
+</html>
