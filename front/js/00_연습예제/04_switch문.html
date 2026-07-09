@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>switch 연습 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		prompt로 문자를 입력받아 문자가 +, -, *, /, %이면 산술연산자라고 출력하고
+		아니면 산술연산자가 아닙니다라고 출력하는 코드를 switch문으로 작성하세요.
+		*/
+		let 연산자 = prompt('산술 연산자 입력');
+		
+		switch(연산자){
+			case '+':	case '-': case '*': case '/': case '%':
+				document.write(연산자+"은 산술연산자입니다.<br>");
+				break;
+			default:
+				document.write(연산자+"은 산술연산자가 아닙니다.<br>");
+		}
+	</script>
+</body>
+</html>

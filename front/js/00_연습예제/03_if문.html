@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>if문 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		숫자가 0보다 크면 양수라고 출력하고
+		숫자가 0보다 작으면 음수라고 출력하고 
+		숫자가 0이면 0이라고 출력하세요.
+		*/
+		let 숫자 = -1;
+		/*
+		아래 예제를 if 3개로 구현하면 무조건 3번 비교를 함
+		아래 예제는 if else로 구현되어 있기 때문에 최소 1번, 최대 2번 비교를 함
+		*/
+		if(숫자 > 0){
+			document.write(`${숫자}은 양수<br>`);
+		}
+		else if(숫자 < 0){
+			document.write(`${숫자}은 음수<br>`);
+		}
+		else{
+			document.write(`0<br>`);
+		}
+		/*
+		숫자가 홀수인지 짝수인 판별하는 코드를 작성하세요.
+		=> 
+		숫자를 2로 나누었을 때 나머지가 0과 같다면 짝수라고 출력하고
+		아니면 홀수라고 출력하세요.
+		*/
+		숫자 = 2;
+		if(숫자 % 2  == 0){
+			document.write(`${숫자}은 짝수<br>`);
+		}else{
+			document.write(`${숫자}은 홀수<br>`);
+		}
+		/* 
+		숫자가 2의 배수, 3의 배수, 6의 배수인지 판별하세요.
+		2 : 2의 배수
+		3 : 3의 배수
+		4 : 2의 배수
+		5 : 2,3,6의 배수가 아님
+		6 : 6의 배수
+		2의 배수 => 짝수
+		*/
+		숫자 = 6;
+		if(숫자 % 2  == 0 && 숫자 % 3 != 0){
+			document.write(`${숫자}은 2의 배수<br>`);
+		}
+		else if(숫자 % 3  == 0 && 숫자 % 2 != 0){
+			document.write(`${숫자}은 3의 배수<br>`);
+		}
+		else if(숫자 % 6  == 0){
+			document.write(`${숫자}은 6의 배수<br>`);
+		}
+		else{
+			document.write(`${숫자}은 2,3,6의 배수가 아님<br>`);
+		}
+
+		//중첩 if문 적용
+		if(숫자 % 2  == 0){
+			if(숫자 % 3 == 0){
+				document.write(`${숫자}은 6의 배수<br>`);
+			}
+			else{
+				document.write(`${숫자}은 2의 배수<br>`);
+			}
+		}
+		else if(숫자 % 3  == 0){
+			document.write(`${숫자}은 3의 배수<br>`);
+		}
+		else{
+			document.write(`${숫자}은 2,3,6의 배수가 아님<br>`);
+		}
+	</script>
+</body>
+</html>
