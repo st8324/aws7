@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 선택 예제</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li class="item-menu">
+					<a href="">메뉴1</a>
+				</li>
+				<li class="item-menu">
+					<a href="">메뉴2</a>
+				</li>
+				<li class="item-menu">
+					<a href="">메뉴3</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<article>컨텐츠1</article>
+			<article>컨텐츠2</article>
+		</section>
+	</main>
+	<footer id="footer">
+		푸터
+	</footer>
+	<script>
+		/*
+		요소 선택 예제
+		- 태그들을 선택하는 방법을 배움
+		요소 선택하는 이유
+		- 요소를 선택해서 동작을 시키기 위해
+		- A버튼을 눌렀더니 B박스가 나타나게 하고 싶을 때
+
+		DOM : Document Object Model
+		- HTML 문서를 트리 구조로 표현
+		- document 객체를 통해 요소를 선택할 수 있음
+
+		요소 선택
+		- 객체를 기준으로 요소를 선택
+		- document라는 객체를 기준으로 요소를 선택하면 문서 전체에서 요소를 선택
+		  - document.~~~()
+		- 객체A를 기준으로 요소를 선택하면 객체A의 자손 요소 중에서 요소를 선택
+			- 객체A.~~~()
+
+		1. 아이디를 이용
+		- 결과가 0개 또는 1개
+		let 변수명 = document.getElementById(아이디명);
+		
+		2. 클래스명을 이용
+		- 결과가 0개 이상
+		- 배열을 이용
+		let 변수명 = document.getElementsByClassName(클래스명)
+
+		3. 태그명을 이용
+		- 결과가 0개 이상
+		- 배열을 이용
+		let 변수명 = document.getElementsByTagName(태그명)
+
+		4. 선택자를 이용
+		- 선택자 : css에서 요소를 선택하기 위한 방법
+		4-1. 선택자와 일치하는 요소 모두를 선택
+		- 배열을 이용
+		- forEach 이용 가능
+		let 변수명 = document.querySelectorAll('선택자')
+		4-2. 선택자와 일치하는 첫번째 요소를 선택
+		- 0개 또는 1개
+		let 변수명 = document.querySelector('선택자')
+
+		*/
+		//아이디를 이용하여 요소를 선택
+		let footer = document.getElementById('footer')
+		console.log(footer)//개발자 도구 콘솔창에서 확인 가능
+		
+		let items = document.getElementsByClassName('item-menu')
+		console.log(items);//개발자 도구 콘솔창에서 확인 가능
+
+		let articles = document.getElementsByTagName('article')
+		console.log(articles);//개발자 도구 콘솔창에서 확인 가능
+
+		let items2 = document.querySelectorAll('.item-menu')
+		console.log(items2);//개발자 도구 콘솔창에서 확인 가능
+
+		let item = document.querySelector('.item-menu')
+		console.log(item);//개발자 도구 콘솔창에서 확인 가능
+	</script>
+</body>
+</html>
