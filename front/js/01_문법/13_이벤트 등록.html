@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 등록 </title>
+</head>
+<body>
+	
+	
+	<button onclick="alert('버튼1 클릭')">버튼1</button>
+	<button id="btn2">버튼2</button>
+	<button class="btn3">버튼3</button>
+	<button class="btn4">버튼4</button>
+	<script>
+		/*
+		이벤트 등록 방법
+		1. 요소에 속성으로 이벤트를 등록 
+		- 함수를 만들고 태그 옆에 on이벤트명 속성을 추가해서 함수를 호출
+		- 예시 : <button onclick="alert('클릭')">클릭</button>
+
+		2. 요소.on이벤트명을 이용해서 등록(스크립트 태그에서)
+		요소.on이벤트명 = 함수
+		요소.on이벤트명 = function(){
+
+		}
+		요소.on이벤트명 = ()=>{
+		
+		}
+
+		3. 요소.addEventListener(이벤트명, 함수)
+		- 권장
+		*/
+		//방법2
+		let btn2 = document.getElementById('btn2');
+		function btnAlert(){
+			alert('버튼2 클릭');
+		}
+		btn2.onclick = btnAlert;
+		//방법3
+		let btn3 = document.getElementsByClassName('btn3')[0];
+		function btnAlert3(){
+			alert('버튼3 클릭');
+		}
+		btn3.addEventListener('click', btnAlert3);
+		//방법4
+		//이벤트 등록시 호출하는 함수의 첫번째 매개변수는 이벤트 객체이다
+		//이벤트 객체 : 이벤트가 발생한 정보. 어떤 요소에서 발생했는지, 위치는 어디인지, 종류는 무엇인지 등
+		function btnAlert4(e){
+			//e.target : 이벤트가 최초로 발생한 요소
+			//e.currentTarget : 현재 이벤트가 적용된 요소
+			//해당 요소가 주어진 선택자와 일치하는지를 알려줌
+			if(e.target.matches('.btn4')){
+				alert('버튼4 클릭');
+			}
+		}
+		document.addEventListener('click', btnAlert4)
+
+		/*
+		방법1. script 태그 위치에 영향을 안 받음 => script 태그에 관련 코드가 없음
+		방법2와 방법3. script 태그 위치에 영향을 받음
+		=> 요소가 배치되기 전 이벤트를 등록하면 없는 요소에 이벤트를 등록하려고 했기 때문에 에러 발생
+		방법4. script 태그 위치에 영향을 안 받음 
+		=> 이벤트를 요소에 등록하는게 아니라 document에 등록하기 때문에 => 요소가 배치되기 전이라도 상관 없음
+		*/
+	</script>
+</body>
+</html>
