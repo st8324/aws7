@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열</title>
+</head>
+<body>
+	
+	<script>
+		/*
+		앞에서 선택한 요소들을 활용하려면 배열을 알아야 함.
+		배열
+		- 여러개 정보를 묶어서 관리할 때 사용
+		- 반복문과 함께 사용 
+		- 배열 자체에서 기능을 제공
+
+		배열 선언 방법
+		let 변수명 = []; //빈 배열 생성
+		let 변수명 = [값1, 값2, ...]; //초기값이 있는 경우 배열 생성
+		let 변수명 = new Array(size); //배열의 크기가 size인 배열 생성
+		let 변수명 = new Array(값1, 값2, ...); 초기값이 있는 배열 생성
+
+		배열 사용 방법
+		- 번지 : 위치로 0부터 시작. 3개짜리 배열은 0번지부터 시작해서 2번지까지 있음
+		1. 배열값 수정
+		변수명[번지] = 값;
+		2. 배열값 가져오기
+		변수명[번지]
+		 */ 
+		let arr = [1, 2, 3];
+		//값2를 값4로 바꾸고 싶음
+		arr[1] = 4; //배열값 수정
+		console.log(arr);
+		console.log(arr[0]);//0번지(처음값)에 있는 값을 가져옴
+
+		//반복문으로 배열에 있는 값을 확인해서 브라우저에 출력
+		// i<=2 와 i<3가 결과가 같음. 그런데 배열의 개수가 3개이어서 3이 들어간 식으로 표현
+		arr.push('push')
+		arr.unshift('unshift')
+		for(i = 0; i < arr.length; ++i){
+			document.write(`${arr[i]}<br>`);
+		}
+		/* 
+		배열에서 제공하는 기능들
+		1. 변수.length
+		- 배열의 크기를 반환
+
+		2. 배열에 값 추가
+		변수.push(값)
+		- 배열 끝에 값을 추가 
+		변수.unshift(값)
+		- 배열 앞에 값을 추가
+
+		3. 배열 값 삭제
+		변수.pop()
+		- 배열 끝에 값을 삭제 후 반환
+		변수.shift()
+		- 배열 앞에 값을 삭제 후 반환
+
+		4. 값의 존재 여부 확인
+		변수.indexOf(값) 
+		- 배열에 값이 몇번지에 있는지를 반환. 숫자로. 없으면 -1
+		변수.includes(값)
+		- 배열에 값이 있는지 없는지를 반환. true/false
+
+		5. 부분 배열 만들기
+		변수.slice(시작위치?, 끝위치?)
+		- ?는 없어도 된다는 뜻
+		- 시작위치부터 끝위치-1번지까지 포함된 부분 배열을 생성하여 반환 => 원본이 변경 안됨
+		- 끝위치 생략시 배열 끝까지, 시작위치 생략시 배열 전체를 부분 배열 생성
+		  - 변수.slice(3) : 3번지부터 끝까지가 포함된 부분 배열 생성
+			- 변수.slice() : 배열과 동일한 배열을 생성
+
+		변수.splice(시작위치, 개수?)
+		- 시작번지에서 개수만큼 삭제해서 삭제된 값을 반환 => 원본이 바뀜
+
+		6. 배열을 문자열로
+		변수.join(구분자)
+		- 구분자를 이용하여 배열의 값들을 문자열로 만들어서 반환
+
+
+		*/
+		console.log('삭제전 배열')
+		console.log(arr)
+		console.log('앞에 있는 값 제거')
+		console.log('제거된 값 : ', arr.shift())
+		console.log('제거 후 배열')
+		console.log(arr)
+		console.log('뒤에 있는 값 제거')
+		console.log('제거된 값 : ', arr.pop())
+		console.log('제거 후 배열')
+		console.log(arr)
+
+		console.log('10이 어디에 있나요?', arr.indexOf(10))
+		console.log('4가 어디에 있나요?', arr.indexOf(4))
+
+		console.log('10이 있나요?', arr.includes(10))
+		console.log('4가 있나요?', arr.includes(4))
+
+		let arr2 = arr.slice(1);
+		console.log('slice로 부분 배열 생성')
+		console.log('생성 후 원본')
+		console.log(arr)
+		console.log('생성된 배열')
+		console.log(arr2)
+
+		let arr3 = arr.splice(1);
+		console.log('splice로 부분 배열 생성')
+		console.log('생성 후 원본')
+		console.log(arr)
+		console.log('생성된 배열')
+		console.log(arr3)
+
+		let arr4 = [1, 2, 3];
+		console.log('join 이용 : ', arr4.join("-"))
+	</script>
+</body>
+</html>
