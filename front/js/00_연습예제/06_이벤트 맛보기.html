@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 맛보기 예제</title>
+	<style>
+		.box{
+			border: 3px solid black; height: 300px; background: yellow; margin: 30px 0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	버튼을 클릭하면 박스가 나타났다 사라지는 기능을 구현
+	다음주 수업 내용을 미리 보여줌
+	-->
+	<button id="btn">박스 보기</button>
+	<div class="box">박스입니다.</div>
+
+	<script>
+		const btn = document.querySelector('#btn');
+		const box = document.querySelector('.box');
+
+		btn.addEventListener('click', (e)=>{
+			//박스가 보이는 중에 버튼을 클릭 => 박스 감추기
+			if(btn.classList.contains('show')){
+				box.style.display = 'none';
+				btn.textContent = '박스 보기';
+			}
+			//박스가 안 보이는 중에 버튼을 클릭 => 박스 보이기
+			else{
+				box.style.display = 'block';
+				btn.textContent = '박스 감추기';
+			}
+			btn.classList.toggle('show')
+
+		})
+	</script>
+</body>
+</html>
