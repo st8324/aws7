@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 종류 예제</title>
+	<style>
+		.box{
+			margin: 100px;
+			border: 3px solid black;
+			height: 100px;
+		}
+		body{ height: 2000px;}
+		#up{ position: fixed; bottom: 10px; right: 10px;}
+	</style>
+</head>
+<body>
+	<h1>마우스 이벤트 확인 예제(개발자 도구 콘솔창 확인)</h1>
+	<div class="box"></div>
+
+	
+	<script>
+		//키보드 이벤트 예제
+		let box = document.querySelector('.box');
+		box.addEventListener('click', (e)=>{ console.log('.box 클릭')})
+		box.addEventListener('dblclick', (e)=>{ console.log('.box 더블 클릭')})
+		box.addEventListener('mouseup', (e)=>{ console.log('.box 마우스 뗌')})
+		box.addEventListener('mousedown', (e)=>{ console.log('.box 마우스 눌림')})
+		box.addEventListener('mouseenter', (e)=>{ console.log('.box에 들어감')})
+		box.addEventListener('mouseleave', (e)=>{ console.log('.box에서 나옴')})
+		box.addEventListener('contextmenu', (e)=>{ console.log('.box 우클릭')})
+		box.addEventListener('mousemove', (e)=>{ console.log('.box에서 이동중')})
+
+		/*
+		마우스 이벤트
+		- click : 클릭
+		- dblclick : 더블 클릭
+		- mouseup : 마우스를 땠을 때
+		- mousedown : 마우스를 눌렀을 때
+		- mousemove : 마우스를 이동 시킬 때
+		- mouseenter : 요소에 마우스를 hover 했을 때
+		- mouseleave : 요소에 hover했던 마우스를 밖으로 이동해서 나갔을 때
+		- contextmenu : 마우스 우클릭
+		
+		키보드 이벤트
+		- keydown : 키를 눌렀을 때, 모든 키 인식
+		- keyup : 키를 땠을 때
+		
+		form 이벤트(입력, 전송과 관련된 이벤트)
+		- submit : 
+		  - form태그에 적용하는 이벤트. 
+			- 서버에 전송하기전 호출되는 이벤트
+			- 반환값(return)이 false이면 전송 안함. true이거나 생략하면 전송
+			- 입력한 값에 빈 값이 없는지, 아이디나 비번처럼 패턴을 확인할 때 사용
+		- input : 입력 태그에 입력을 했을 때. 북붙도 이벤트 동작
+		- chagne : 
+		  - 입력 태그에 값을 변경 했을 때. 
+			- 변경 여부는 포커스가 해제되거나 엔터를 쳤을 때 기존 값과 다른 경우 발생
+			  => 입력중에는 발생하지 않음
+		- focus : 입력 태그가 활성화 될때.
+		- blur : 활성화된 태그가 비활성화 될때
+
+		window 객체에 적용되는 이벤트
+		- load : 리소스가 모두 로드 됐을 때(css, js, 이미지 등)
+		- scroll : 스크롤이 발생됐을 때
+		- unload : 페이지가 닫히기 전 발생
+		- resize : 브라우저 창 크기가 변경됐을 때
+
+		DOMContentLoaded 이벤트
+		- HTML문서의 DOM 구조가 모두 로드되면 실행
+		- 가장 많이 사용되는 문서 로딩 이벤트
+
+		DOMContentLoaded vs window.load
+		- DOMContentLoaded : DOM 트리가 완성되면 실행. 속도가 빠름
+		- load : DOM 트리, 이미지, CSS 등 모든 리소스가 로딩되면 실행. 속도가 느림
+		*/
+	</script>
+
+	<h1>키보드 + form 이벤트 확인 예제(개발자 도구 콘솔창 확인)</h1>
+	<form action="">
+		<input type="text" name="id" value="abc123">
+		<br>
+		<input type="text">
+		<br>
+		<select name="fruit" id="fruit">
+			<option>사과</option>
+			<option>바나나</option>
+		</select>
+		<br>
+		<button type="submit">전송</button>
+	</form>
+	<script>
+		//form 이벤트들 예제
+		let inputId = document.querySelector('[name=id]');
+		// change와 input을 확인하기 위해 keydown,keyup을 잠시 주석 처리함
+		// inputId.addEventListener('keydown', (e)=> console.log('키 눌림'))
+		// inputId.addEventListener('keyup', (e)=> console.log('키 뗌'))
+		inputId.addEventListener('change', (e)=> console.log('입력 바뀜'))
+		inputId.addEventListener('input', (e)=> console.log('입력 됨'))
+		inputId.addEventListener('focus', (e)=> console.log('활성화'))
+		inputId.addEventListener('blur', (e)=> console.log('비활성화'))
+
+		let form = document.querySelector('form');
+		form.onsubmit = (e)=> {
+			console.log('전송하지마! - onsubmit');
+			return false;
+		};
+		form.addEventListener('submit', (e)=>{
+			e.preventDefault();//태그의 기본 효과를 막아줌
+			console.log('전송하지마! - addEventListener');
+		})
+	</script>
+	
+	<script>
+		//window 이벤트
+		window.onload = (e)=>{
+			console.log('리소스 로드 완료')
+		}
+		document.addEventListener('DOMContentLoaded',(e)=> console.log('DOM 트리 로드 완료'));
+
+		window.onresize = (e)=> console.log('브라우저 크기 변경')
+		window.addEventListener('beforeunload', (e)=> {
+			//로컬 스토리지라는 곳에 메세지를 남김
+			localStorage.setItem('message', '브라우저 종료')
+		})
+	</script>
+	<button id="up">위로</button>
+	<script>
+		let up = document.querySelector('#up');
+		up.addEventListener('click', (e)=>{
+			//x축:0, y축:50px 위치로 이동
+			//window.scrollTo(0,50);
+			//y축 50px로 이동하는데 부드럽게 이동
+			window.scrollTo({
+				top : 50,
+				behavior : 'smooth'
+			})
+		})
+		window.addEventListener('scroll', (e)=>console.log('스크롤중'))
+	</script>
+</body>
+</html>
