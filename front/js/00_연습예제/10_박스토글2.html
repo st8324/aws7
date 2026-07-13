@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 토글 예제</title>
+	<style>
+		.box{
+			height: 200px; background-color: yellow;
+			border:  3px solid black; width: 200px;
+		}
+		.display-none{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1" data-target="#box1" class="btn">감추기1</button>
+	<button id="btn2" data-target="#box2" class="btn">감추기2</button>
+	<button id="btn3" data-target="#box3" class="btn">감추기3</button>
+
+	<div class="box" id="box1">1</div>
+	<div class="box" id="box2">2</div>
+	<div class="box" id="box3">3</div>
+
+
+	<script>
+		const btns = document.querySelectorAll(".btn");//여러개
+		
+
+		//반복문을 이용하여 버튼들에게 클릭 이벤트를 등록
+		/*for(i = 0; i < btns.length; ++i){
+			const btn = btns[i];
+			btn.addEventListener('click',function(){
+				//버튼에 있는 data-target 정보를 가져옴
+				let target = btn.dataset.target;
+				//박스 보여주거나 감춤
+				showOrHideBox(target)
+				//버튼 텍스트를 변경
+				changeButtonText(btn);
+			})
+		}*/
+		btns.forEach((btn)=>{
+			btn.addEventListener('click',function(){
+				//버튼에 있는 data-target 정보를 가져옴
+				let target = btn.dataset.target;
+				//박스 보여주거나 감춤
+				showOrHideBox(target)
+				//버튼 텍스트를 변경
+				changeButtonText(btn);
+			
+			})
+		})
+
+
+		//버튼 텍스트를 바꾸는 함수
+		function changeButtonText(btn){
+			const HIDE_TEXT = "감추기", SHOW_TEXT = "보기";
+
+			if(btn.classList.contains('show')){
+				btn.textContent = HIDE_TEXT;
+			}else{
+				btn.textContent = SHOW_TEXT;
+			}
+			btn.classList.toggle('show');
+		}
+		//버튼과 연결된 박스를 보여주거나 감추는 함수
+		function showOrHideBox(boxSelector){
+			const box = document.querySelector(boxSelector);
+			box.classList.toggle('display-none');
+		}
+	</script>
+
+	<script>
+		/* 
+		감추기1은 박스1과 연결하고, 감추기2는 박스2와, 감추기3은 박스3과 연결해서 구현
+		*/
+		//요소들 선택
+		/*
+		const btn1 = document.querySelector("#btn1");
+		const btn2 = document.querySelector("#btn2");
+		const btn3 = document.querySelector("#btn3");
+		const box1 = document.querySelector("#box1");
+		const box2 = document.querySelector("#box2");
+		const box3 = document.querySelector("#box3");
+		const HIDE_TEXT = "감추기", SHOW_TEXT = "보기";
+
+		btn1.addEventListener('click', function(){
+			box1.classList.toggle('display-none');
+
+			//방법 : 버튼 클래스를 비교해서 구현
+			if(btn1.classList.contains('show')){
+				btn1.textContent = HIDE_TEXT;
+			}else{
+				btn1.textContent = SHOW_TEXT;
+			}
+			btn1.classList.toggle('show');
+
+		});
+
+		btn2.addEventListener('click', function(){
+			box2.classList.toggle('display-none');
+
+			//방법 : 버튼 클래스를 비교해서 구현
+			if(btn2.classList.contains('show')){
+				btn2.textContent = HIDE_TEXT;
+			}else{
+				btn2.textContent = SHOW_TEXT;
+			}
+			btn2.classList.toggle('show');
+
+		});
+		btn3.addEventListener('click', function(){
+			box3.classList.toggle('display-none');
+
+			//방법 : 버튼 클래스를 비교해서 구현
+			if(btn3.classList.contains('show')){
+				btn3.textContent = HIDE_TEXT;
+			}else{
+				btn3.textContent = SHOW_TEXT;
+			}
+			btn3.classList.toggle('show');
+
+		});
+		*/
+	</script>
+</body>
+</html>

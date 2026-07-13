@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 토글 예제</title>
+	<style>
+		.box{
+			height: 200px; background-color: yellow;
+		}
+		.display-none{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">감추기</button>
+	<div class="box "></div>
+
+	<script>
+		/* 
+		btn1을 클릭했을 때 btn1이 감추기이면 box를 감춘 후 보기 버튼으로 바꾸고,
+		btn1을 클릭했을 때 btn1이 보기이면 box를 보여준 후 감추기 버튼으로 바꾸는 작업을 
+		classList를 이용하여 작업하세요.
+		*/
+		//요소들 선택
+		const btn1 = document.querySelector("#btn1");
+		const box = document.querySelector(".box");
+		const HIDE_TEXT = "감추기", SHOW_TEXT = "보기";
+
+		btn1.addEventListener('click', function(){
+			box.classList.toggle('display-none');
+
+			//방법 : 버튼 클래스를 비교해서 구현
+			if(btn1.classList.contains('show')){
+				btn1.textContent = HIDE_TEXT;
+			}else{
+				btn1.textContent = SHOW_TEXT;
+			}
+			btn1.classList.toggle('show');
+
+			//방법 : 버튼 글자를 비교해서 구현
+			/*
+			if(btn1.textContent === HIDE_TEXT){
+				btn1.textContent = SHOW_TEXT;
+			}else{
+				btn1.textContent = HIDE_TEXT;
+			}
+			*/
+			//위 방법을 조건 연산자를 이용해서 한줄로 표현(몰라도 됨. 알면 코드가 간결해짐)
+			//btn1.textContent = btn1.textContent === HIDE_TEXT ? SHOW_TEXT : HIDE_TEXT;
+
+		});
+
+		
+	</script>
+</body>
+</html>
