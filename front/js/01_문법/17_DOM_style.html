@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>style 적용</title>
+</head>
+<body>
+	<!-- 
+	숨김 버튼을 클릭하면 박스가 사라지고,
+	보기 버튼을 클릭하면 박스가 보이도록 작업
+	-->
+	<button id="hideBtn">숨김</button>
+	<button id="showBtn">보기</button>
+	<!-- 
+	박스의 배경을 하늘색으로, 높이는 200px이 되도록 작업
+	-->
+	<div class="box"></div>
+	<script>
+		/*
+		js로 요소의 스타일을 변경하는 방법
+		- 요소.style.속성명
+		- 속성명이 -로 연결되어 있는 경우 -를 제거한 후 카멜 표기법으로 작성
+		  - 배경색 변경 : 요소.style.backgroundColor = "red";//style.background-color가 아님
+		*/
+		//요소 선택
+		const boxEl = document.querySelector('.box');
+
+		//요소 배경을 하늘색
+		boxEl.style.backgroundColor = "skyblue";
+		//요소 높이를 200px
+		boxEl.style.height = "200px";
+
+		//숨김 버튼 선택
+		const hideBtnEl = document.querySelector("#hideBtn");
+
+		//숨김 버튼에 클릭 이벤트 등록
+		hideBtnEl.addEventListener('click', function(){
+			//박스 감추기
+			boxEl.style.display = "none";
+		})
+
+		//보기 버튼 선택
+		const shwoBtnEl = document.querySelector("#showBtn");
+
+		//보기 버튼에 클릭 이벤트 등록
+		shwoBtnEl.addEventListener('click', function(){
+			//박스 보기
+			boxEl.style.display = "block";
+		})
+	</script>
+</body>
+</html>
