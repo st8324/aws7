@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM 텍스트 예제</title>
+</head>
+<body>
+	<button id="btn">클릭</button>
+
+	<div class="box">
+		<div class="inner" style="display: none;">안보임</div>
+		<div>보임</div>
+	</div>
+
+	<div class="box2">
+		<a href="#">링크</a>
+	</div>
+	<script>
+		/* 
+		텍스트 가져오기 : 태그 사이에 있는 텍스트를 가져옴
+		1. 요소.innerText
+			- 스타일에 영향을 받음. 자손 요소에 display:none; 요소가 있으면 글자를 못읽음
+
+		2. 요소.textContent
+			- 스타일에 영향을 받지 않음
+		*/
+		//id가 btn인 요소 선택
+		const btn = document.querySelector('#btn');
+		// btn 요소의 텍스트 가져옴
+		let text = btn.innerText;
+		//확인
+		console.log(text);
+
+		//class가 box인 첫번째 요소 선택
+		const box = document.querySelector('.box');
+		//box 요소의 텍스트 가져옴(스타일 적용 O)
+		let boxText = box.innerText;
+		//확인
+		console.log(boxText)
+		//box 요소의 텍스트 가져옴(스타일 적용 X)
+		let boxText2 = box.textContent;
+		console.log(boxText2)
+		//btn 요소의 텍스트를 수정
+		btn.innerText = '버튼 클릭';
+
+		/*
+		HTML 코드 가져오기/수정하기/추가하기
+		- 요소 안의 html 코드를 가져옴
+		요소.innerHTML
+		*/
+		//class가 box2인 요소를 선택
+		const box2 = document.querySelector('.box2');
+		//html 코드 가져와서 확인
+		let htmlCode2 = box2.innerHTML;
+		console.log(htmlCode2);
+		//html 코드 수정하기
+		box2.innerHTML = '<button>버튼</button>';
+		//html 코드 추가하기
+		box2.innerHTML = box2.innerHTML + '<button>버튼</button>';
+	</script>
+</body>
+</html>
