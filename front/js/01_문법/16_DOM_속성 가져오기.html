@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성 가져오기 예제</title>
+</head>
+<body>
+	<input type="text" id="input1" value="안녕하세요.">
+	<a href="//naver.com" id="link1">네이버로 이동</a>
+	<script>
+		/* 
+		요소
+		- 태그로 된 코드
+
+		표준속성
+		- 태그가 사용할 수 있는 기능 속성
+		- 태그마다 종류가 다름
+			- value 속성 : input태그 O, div 태그 X, select태그 O
+			- src 속성 : img 태그 O, video 태그 O
+			- href 속성 : a 태그 O
+
+		표준속성 가져오기/수정하기
+		- 요소.표준속성명
+		*/
+		const input = document.querySelector('#input1');
+		let value = input.value;
+		console.log(value);
+		input.value = '값 수정';
+
+		const link1 = document.querySelector('#link1');
+		let link = link1.href;
+		console.log('a태그 링크 : ' , link);
+	</script>
+
+	<div id="box" value="안녕">안녕하세요.</div>
+	<button id="delBtn" data-target="1" data-action="delete">게시글 삭제</button>
+	<script>
+		/*
+		표준 속성이 아닌 속성을 가져옴/수정
+
+		요소.getAttribute(속성명)
+		- 요소의 속성값을 가져옴
+
+		요소.setAttribute(속성명, 값)
+		- 요소의 속성값을 변경
+
+		*/
+		const box = document.querySelector('#box');
+		box.setAttribute('value', '안녕이었는데...')
+		console.log('div태그의 value : ', box.getAttribute('value'));
+
+		/* 
+		data-* 속성
+		- 표준 속성은 아님 => 요소.data-*형태로 사용 안됨
+		- 서버 또는 다른 곳에 전달하고 싶은 정보가 많은데, 태그에 넣을 수 있는 값은 제한
+		- 데이터를 넣을 수 있는 공식 표준 방식
+
+		data-*을 가져오거나 수정하는 방법
+		- 예시 : data-target, data-user-id
+		data-target 가져오기 : 요소.dataset.target
+		data-user-id 가져오기: 요소.dataset.userId
+		*/
+		const delBtn = document.querySelector('#delBtn');
+		let target = delBtn.dataset.target;
+		let action = delBtn.dataset.action;
+		console.log(target,'번 게시글을 ', action, '합니다.')
+	</script>
+</body>
+</html>
