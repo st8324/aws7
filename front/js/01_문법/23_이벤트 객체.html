@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 객체</title>
+</head>
+<body>
+	<a href="//naver.com" class="link-naver">네이버로 이동</a>
+	<button id="btn1" style="margin-top: 1000px;">클릭</button>
+	<div class="box"></div>
+	<script>
+		/*
+		이벤트 객체
+		- 이벤트가 발생했을 때, 이벤트 정보를 담고 있는 객체
+		- 이벤트 등록 시 사용하는 함수의 첫번째 매개변수로 이벤트 객체를 넘겨줄 수 있음
+		- 속성
+			- type : 이벤트 유형(click, keydown 등)
+			- target : 이벤트가 처음 발생한 요소
+			- currentTarget : 이벤트가 발생한 요소
+			- key : 눌린 키를 문자열로. 영어 대소문자 구별
+			- code : 눌린 키의 키보드상 물리적 위치. 영어 대소문자 구별 못함
+			- 위치
+				- clientX/clientY : 이벤트가 발생한 시점의 뷰포트내 좌표(브라우저상 위치)
+				- pageX/pageY : 이벤트가 발생한 시점의 문서내 좌표
+				- screenX/screenY : 이벤트가 발생한 시점의 화면내 좌표
+		- 함수
+			- preventDefault() : 기본 동작을 하지 않도록 막음
+			- stopPropagation() : 버블링/캡처링을 중지. 다른 이벤트의 버블링/캡처링을 진행 시킴
+			- stopImmediatePropagation() : 버블링/캡처링 중지. 다른 이벤트의 버블링/캡처링을 막음
+		*/
+		const btn1 = document.querySelector('#btn1')
+		btn1.addEventListener('click', function(e){
+			let result = `
+				이벤트 타입 : ${e.type}<br>
+				이벤트 발생 위치(브라우저) : ${e.clientX}, ${e.clientY}<br>
+				이벤트 발생 위치(문서) : ${e.pageX}, ${e.pageY}<br>
+				이벤트 발생 위치(화면) : ${e.screenX}, ${e.screenY}<br>
+			`;
+			const box = document.querySelector('.box');
+			box.innerHTML = result;
+			console.log('이벤트 발생(최소) 요소 : ', e.target)
+			console.log('이벤트 발생(현재) 요소 : ', e.currentTarget)
+		})
+		const naverLink = document.querySelector('.link-naver')
+		naverLink.addEventListener('click', function(e){
+			e.preventDefault();
+		})
+	</script>
+</body>
+</html>

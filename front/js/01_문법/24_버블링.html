@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버블링</title>
+</head>
+<body>
+	
+	<ul>
+		<li>
+			<a href="#">클릭</a>
+		</li>
+	</ul>
+
+	<script>
+		/* 
+		버블링(기본)
+		- 이벤트가 발생하면 해당 요소뿐 아니라 조상 요소에게도 이벤트가 퍼지는 현상
+		캡처링
+		- 이벤트가 발생하면 해당 요소뿐 아니라 자손 요소에게도 이벤트가 퍼지는 현상
+		*/
+		const ul = document.querySelector('ul');
+		ul.addEventListener('click', function(e){
+			console.log('ul태그 클릭됨');
+		})
+
+		const li = document.querySelector('li');
+		li.addEventListener('click', function(e){
+			console.log('li태그 클릭됨');
+		})
+
+		const a = document.querySelector('a');
+		a.addEventListener('click', function(e){
+			console.log('a태그 클릭됨');
+			e.stopPropagation();
+		})
+
+	</script>
+</body>
+</html>
