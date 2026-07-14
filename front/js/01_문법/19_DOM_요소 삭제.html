@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 삭제</title>
+	<style>
+		ul{ background-color: yellow; padding: 10px 10px;}
+	</style>
+</head>
+<body>
+	<button id="btn1">ul 태그 삭제</button>
+	<button id="btn2">첫번째 li 태그 삭제</button>
+	<ul>
+		<li>사과</li>
+		<li>포도</li>
+		<li>딸기</li>
+	</ul>
+	<script>
+		/*
+		요소 삭제
+		- 요소를 화면에서 제거
+		- 요소.remove()
+
+		자식 요소 삭제
+		- 자식 요소를 화면에서 제거
+		- 요소.removeChild(자식요소)
+		*/
+		const btn1 = document.querySelector('#btn1');
+		const btn2 = document.querySelector('#btn2');
+		const ul = document.querySelector('ul');
+		
+		btn1.addEventListener('click', function(){
+			ul.remove();
+		});
+		btn2.addEventListener('click', function(){
+			const firstLi = document.querySelector('li');
+			//자식요소가 있을 때만 삭제
+			if(firstLi){
+				ul.removeChild(firstLi);
+			}
+		});
+	</script>
+</body>
+</html>
