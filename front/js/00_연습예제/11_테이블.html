@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테이블 예제</title>
+	<style>
+		.table{ 
+			width: 100%; border-collapse: collapse;
+		}
+		.table td, .table th{
+			border: 3px solid black;
+			border-width: 3px 0;
+			line-height: 50px; font-size: 24px;
+		}
+		.del-btn{
+			cursor: pointer; width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>조회수</th>
+				<th>비고</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2</td>
+				<td>
+					<a href="#">게시글입니다.</a>
+				</td>
+				<td>10</td>
+				<td>
+					<button class="del-btn">삭제</button>
+				</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>
+					<a href="#">게시글입니다.</a>
+				</td>
+				<td>20</td>
+				<td>
+					<button class="del-btn">삭제</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		//모든 삭제 버튼 선택
+		const delBtns = document.querySelectorAll('.del-btn');
+
+		//각 삭제 버튼에 클릭 이벤트를 등록
+		//삭제 버튼들이 있으면 이벤트를 등록
+		if(delBtns){
+			delBtns.forEach(function(btn, index){
+				btn.addEventListener('click', function(){
+					//삭제할 요소를 탐색 => 삭제할 버튼을 감싸고 있는 tr태그
+					// => 삭제할 버튼의 조상 중 tr태그를 탐색
+					const target = btn.closest('tr');
+
+					//선택한 요소를 삭제
+					target.remove();
+					//마지막행을 삭제했으면 등록된게시글이 없습니다를 추가
+					checkEmpty();
+				})
+			})
+		}
+		//tbody에 있는 .tr이 0개이면 등록된 게시글이 없습니다를 추가하는 함수
+		function checkEmpty(){
+			const trs = document.querySelectorAll('tbody>tr');
+			//tbody에 행이 하나라도 있으며 ==> 게시글이 아직 있음
+			if(trs.length > 0){
+				return;
+			}
+			//tr태그 생성
+			const tr = document.createElement('tr');
+
+			//th태그 생성
+			const th = document.createElement('th');
+
+			//th태그에 colspan=4 속성을 추가
+			th.setAttribute('colspan', 4);
+
+			//th태그에 넣을 텍스트 노드 생성
+			const textNode = document.createTextNode('등록된 게시글이 없습니다.');
+
+			//텍스트를 th에 추가
+			th.append(textNode);
+			//th를 tr에 추가
+			tr.append(th);
+			//tr을 table 태그에 tbody에 추가
+			const tbody = document.querySelector('.table tbody');
+			tbody.append(tr);
+		}
+	</script>
+</body>
+</html>
