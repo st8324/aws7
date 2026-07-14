@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가 예제</title>
+</head>
+<body>
+	<div>
+		<button id="btn1">리스트 안, 앞에 추가</button>
+		<button id="btn2">리스트 안, 뒤에 추가</button>
+		<button id="btn3">리스트 앞에 추가</button>
+		<button id="btn4">리스트 뒤에 추가</button>
+	</div>
+	
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+
+	<script>
+		/* 
+		요소 생성
+		- document.createElement('태그명');
+		텍스트 노드 생성
+		- document.createTextNode('텍스트');
+
+		요소 배치
+		1. 요소의 마지막 자식요소 뒤에 배치
+		- 요소.append(요소1, 요소2, ...);
+		- 요소.appendChild(요소1);
+		
+		2. 요소의 첫번째 자식요소 앞에 배치
+		- 요소.prepend(요소1)
+
+		3. 요소 앞에 배치
+		- 요소.before(요소1)
+
+		4. 요소 뒤에 배치
+		- 요소.after(요소1)
+
+		*/
+		
+		const btn1 = document.querySelector("#btn1");
+		const btn2 = document.querySelector("#btn2");
+		const btn3 = document.querySelector("#btn3");
+		const btn4 = document.querySelector("#btn4");
+
+		const ul = document.querySelector("ul");
+
+		btn1.addEventListener('click', function(){
+			// //태그 생성
+			// const li = document.createElement('li')
+			// //태그에 들어갈 텍스트 생성
+			// const text = document.createTextNode('li태그 - 앞에 추가');
+			// //태그에 텍스트 추가
+			// li.append(text);
+			const li = createTag('li', 'li태그 - 앞에 추가');
+			//태그를 ul태그 안, 앞에 추가
+			ul.prepend(li);
+		});
+		
+		btn2.addEventListener('click', function(){
+			const li = createTag('li', 'li태그 - 뒤에 추가');
+			//태그를 ul태그 안, 앞에 추가
+			ul.appendChild(li);
+		});
+
+		btn3.addEventListener('click', function(){
+			const div = createTag('div', 'ul태그 - 앞에 추가');
+			//태그를 ul태그 안, 앞에 추가
+			ul.before(div);
+		});
+
+		btn4.addEventListener('click', function(){
+			const div = createTag('div', 'ul태그 - 뒤에 추가');
+			//태그를 ul태그 안, 앞에 추가
+			ul.after(div);
+		});
+
+		function createTag(tagName, text){
+			//태그 생성
+			const tag = document.createElement(tagName)
+			//태그에 들어갈 텍스트 생성
+			const textNode = document.createTextNode(text);
+			//태그에 텍스트 추가
+			tag.append(textNode);
+			return tag;
+		}
+
+		document.createElement('태그명');
+		document.createTextNode('텍스트');
+	</script>
+</body>
+</html>
