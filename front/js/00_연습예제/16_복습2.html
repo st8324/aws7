@@ -6,11 +6,11 @@
 	<title>연습 예제</title>
 </head>
 <body>
-	<button>-</button>
+	<button class="minus">-</button>
 	<span class="box">1</span>
 	<span>/</span>
-	<span>6</span>
-	<button>+</button>
+	<span class="max">6</span>
+	<button class="plus">+</button>
 	<!-- 
 	+ 버튼을 클릭
 	- 박스에 숫자가 1씩 증가
@@ -22,8 +22,58 @@
 	- 최소 1까지 감소
 	- 1에서 -를 누르면 6으로 수정
 	-->
+	
+	
 	<script>
-		
+		//-버튼 선택
+		const 마이너스버튼 = document.querySelector('.minus');
+		//+버튼 선택
+		const 플러스버튼 = document.querySelector('.plus');
+		//박스 선택
+		const 박스 = document.querySelector('.box');
+		//최대값이 있는 박스 선택
+		const 최대박스 = document.querySelector('.max');
+		//최대 페이지를 가져옴(정수)
+		const MAX_PAGE = parseInt(최대박스.textContent);
+
+		//버튼에 클릭 이벤트를 등록
+		플러스버튼.addEventListener('click', function(){
+			//박스에 있는 텍스트를 가져옴
+			let text = 박스.textContent;
+			
+			//가져온 텍스트를 정수로 변환(parseInt)
+			let num = parseInt(text);
+			
+			//정수를 1증가
+			num = num + 1; // ++num;
+			//증가한 페이지가 최대 페이지보다 크면 => 표현할 수 없는 페이지
+			if(num > MAX_PAGE){
+				num = 1;
+			}
+
+			//박스의 텍스트를 증가한 정수로 수정
+			박스.textContent = num;
+
+		});
+
+		마이너스버튼.addEventListener('click', function(){
+			//박스에 있는 텍스트를 가져옴
+			let text = 박스.textContent;
+			
+			//가져온 텍스트를 정수로 변환(parseInt)
+			let num = parseInt(text);
+			
+			//정수를 1감소
+			--num;
+			//감소한 페이지가 최소 페이지(1)보다 작으면 => 표현할 수 없는 페이지
+			if(num < 1){
+				num = MAX_PAGE;
+			}
+
+			//박스의 텍스트를 증가한 정수로 수정
+			박스.textContent = num;
+
+		});
 	</script>
 </body>
 </html>
