@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연습 예제</title>
+</head>
+<body>
+	<button>+</button>
+	<div class="box">1</div>
+	<!-- + 버튼을 클릭하면 박스에 숫자가 1씩 증가하도록 작성하세요. -->
+	<script>
+		//버튼 선택
+		const 버튼 = document.querySelector('button');
+
+		//박스 선택
+		const 박스 = document.querySelector('.box');
+
+		//버튼에 클릭 이벤트를 등록
+		버튼.addEventListener('click', function(){
+			//박스에 있는 텍스트를 가져옴
+			let text = 박스.textContent;
+			
+			//가져온 텍스트를 정수로 변환(parseInt)
+			let num = parseInt(text);
+			
+			//정수를 1증가
+			num = num + 1; // ++num;
+			//박스의 텍스트를 증가한 정수로 수정
+			박스.textContent = num;
+
+		});
+	</script>
+</body>
+</html>
