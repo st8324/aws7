@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON 예제</title>
+</head>
+<body>
+	
+	<script>
+		/*
+		JSON : JavaScript Object Notation
+		- 데이터를 저장하거나 주고받을 수 있도록 만든 텍스트 기반의 데이터 포맷
+		  => 데이터를 문자열로 저장
+			=> 문자열을 객체로, 객체를 문자열로 변환해주는 기능을 제공
+		- 특징
+			- 가독성이 높음
+			- 텍스트 기반 : 용량이 작음
+			- 언어 독립적 : JS 기반으로 만들어졌지만 다양한 언어에서도 사용이 됨
+		- 규칙
+			- 키 : 값으로 이루어짐
+			- 데이터는 {}를 이용하여 표현
+			- 키에는 반드시 ""를 써야 함
+			- 문자열은 반드시 ""를 써야 함
+		*/
+
+		let json1 = `{
+			"이름" : "홍길동",
+			"나이" : 21,
+			"주소" : "서울시"
+		}`;
+		console.log(json1);
+
+		/*
+		JSON.parse(문자열)
+		- 문자열(JSON형태)을 객체로 변환
+		*/
+		let person1 = JSON.parse(json1);
+		console.log(person1);
+		console.log(person1.이름)
+		/*
+		JSON.stringify(객체)
+		- 객체를 JSON형태의 문자열로 변환
+		*/
+		let person2 = {
+			//객체는 속성명에 ""를 안붙여도 됨
+			//객체에서 문자열은 '', "", `` 다 사용 가능
+			이름 : '임꺽정',
+			나이 : 30,
+			주소 : "경기도"
+		}
+		let json2 = JSON.stringify(person2);
+		console.log(json2)
+	</script>
+</body>
+</html>
