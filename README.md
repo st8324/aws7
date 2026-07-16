@@ -9,3 +9,9 @@ AI융합 과정 수업 자료 저장소 입니다.
 		* Css Navigation
 		* Live Server
 		* Prettier - Code fomatter
+
+## VS Code 팁
+### 탭 간격 조절하기
+1. `File` > `Preperences` > `Settings`
+2. 검색창에 `tab` 검색하여 `Editor: Tab Size`를 2로 설정
+3. 검색창에 `space` 검색하여 `Editor: Insert Spaces` 체크 해제 후 저장
