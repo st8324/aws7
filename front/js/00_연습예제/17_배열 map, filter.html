@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열 map, filter 예제</title>
+</head>
+<body>
+	<h1>학생 목록</h1>
+	<ul class="list-all"></ul>
+	<h1>1학년 학생 목록</h1>
+	<ul class="list1"></ul>
+
+	<script>
+		/* 학생 이름들을 학생 목록에 추가 */
+		let students = ['홍길동', '고길동', '임꺽정', '하니']
+		let studentsLiTag = students.map(function(student, index, array){
+			return `<li>${student}</li>`;
+		})
+		const listAll = document.querySelector('.list-all');
+		//반복문으로 배열에 있는 값 하나씩 꺼내서
+		for(i = 0; i<studentsLiTag.length; i++){
+			//학생 목록 뒤에 추가
+			listAll.innerHTML = listAll.innerHTML + studentsLiTag[i];
+		}
+		//위 반복문으로 작성한 코드를 forEach로 변환
+		studentsLiTag.forEach(function(student, index, array){
+			listAll.innerHTML = listAll.innerHTML + student;
+		})
+		// 위 예제를 화살표 함수로 간략하게 나타냄
+		studentsLiTag.forEach(std => 	listAll.innerHTML = listAll.innerHTML + std)
+
+		const stdFilter = students.filter(function(student, index, array){
+			return student.length > 2;//이름이 3자이상
+		})
+		console.log(stdFilter)
+	</script>
+</body>
+</html>
