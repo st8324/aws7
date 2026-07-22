@@ -9,6 +9,8 @@ AI융합 과정 수업 자료 저장소 입니다.
 		* Css Navigation
 		* Live Server
 		* Prettier - Code fomatter
+3. 이클립스[(링크)](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-win32-x86_64.zip)
+	* Download 버튼 클릭 후 다운로드
 
 ## VS Code 팁
 ### 탭 간격 조절하기
