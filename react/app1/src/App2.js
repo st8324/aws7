@@ -16,18 +16,15 @@ function App2(){
 	//랜더링을 효율적으로 하기위해 state의 setter가 여러개인 경우
 	//모아서 한번에 바꿈
 	const [num, setNum] = useState(1);
-	const [name, setName] = useState("");
 
 	const changeNum = amount => {
 		if(amount > 0){
+			//setter에 함수를 주어서 값을 바꿈. 조금더 안전함
 			setNum(num=>num+1);
-			setName("1");
 		}
 		else{
 			setNum(num-1);
-			setName("-1");
 		}
-		console.log(num);
 	}
 
 	return (
