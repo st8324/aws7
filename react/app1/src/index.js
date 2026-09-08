@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client';
-import App3 from './App3';
+import App4 from './App4';
+// import App3 from './App3';
 // import {App2} from './App2';
 // import App from './App1';
 
@@ -10,5 +11,6 @@ root.render(
   // 시작을 대문자로 함
   // <App />
   // <App2 />
-  <App3 />
+  // <App3 />
+  <App4/>
 );
