@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.box{
+	height: 300px; background-color: yellow;
+}
+
+.hidden{
+	display: none;
+}
