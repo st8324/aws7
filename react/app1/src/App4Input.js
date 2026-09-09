@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //입력태그의 값을 가져오는 예제
-function App4(){
+function App4Input(){
 	const [user, setUser] = useState({ id : '', pw : ''});
 	const inputChange = e => {
 		const {name, value} = e.target;
@@ -26,4 +26,4 @@ function App4(){
 	)
 }
 
-export default App4;
+export default App4Input;

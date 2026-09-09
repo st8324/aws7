@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client';
-import App4 from './App4';
-// import App3 from './App3';
-// import {App2} from './App2';
-// import App from './App1';
+import App4Input from './App4Input';
+// import App3ArrayMap from './App3ArrayMap';
+// import {App2State} from './App2State';
+// import App1ComponentEventProps from './App1ComponentEventProps';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

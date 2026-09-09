@@ -9,7 +9,7 @@
 - export default 컴포넌트; // 1개의 컴포넌트만 내보냄=> 다른곳에서 쓸수 있음
 - export {컴포넌트1, 컴포넌트2, ..}; //여러개의 컴포넌트를 내보냄
 */
-function App() {
+function App1ComponentEventProps() {
 
   //함수 표현식
   const clickEvent = ()=> alert(1);
@@ -57,4 +57,4 @@ function Button({text, click, style}){
   )
 }
 
-export default App;
+export default App1ComponentEventProps;

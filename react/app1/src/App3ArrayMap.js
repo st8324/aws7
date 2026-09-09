@@ -24,7 +24,7 @@ const datas = [
 // 기존 js는 문자열로된 html코드를 만든 후 innerHTML로 했음
 // 리액트에서는 배열의 map을 이용하여 화면 배치 
 
-function App3(){
+function App3ArrayMap(){
 	const [posts, setPosts] = useState([]);
 	const loadDatas = ()=> setPosts(datas);
 	return (
@@ -69,4 +69,4 @@ function App3(){
 	)
 }
 
-export default App3;
+export default App3ArrayMap;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // useState를 이용한 state 변수 설명 예제
-function App2(){
+function App2State(){
 	
 	const arr = [1, 2, 3];
 	let [num1, num2, num3] = arr;
@@ -36,4 +36,4 @@ function App2(){
 	)
 }
 
-export {App2};
+export {App2State};
