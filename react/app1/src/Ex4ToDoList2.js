@@ -25,6 +25,13 @@ function Ex4ToDoList2(){
 		setDatas({...datas, [name] : value})
 	}
 
+	const deleteTodo = num =>{
+		const deletedTodos = [...todos].filter(todo=>{
+			return todo.num != num;
+		});
+		setTodos(deletedTodos);
+	}
+
 	const [todos, setTodos] = useState([]);
 	return (
 		<div>
@@ -37,7 +44,10 @@ function Ex4ToDoList2(){
 				{
 					todos.map((value, index)=>{
 						return (
-							<li key={value.num}>{value.todo}</li>
+							<li key={value.num}>
+								{value.todo}
+								<button onClick={()=>deleteTodo(value.num)}>&times;</button>
+							</li>
 						)
 					})
 				}
