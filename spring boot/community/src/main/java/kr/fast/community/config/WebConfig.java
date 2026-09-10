@@ -2,6 +2,7 @@ package kr.fast.community.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,6 +17,15 @@ public class WebConfig implements WebMvcConfigurer {
 		registry
 			.addResourceHandler("/api/upload/**") //이 URL인 경우
 			.addResourceLocations("file:///" + uploadPath); //아래 폴더와 연결
+	}
+	
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+			.allowedOrigins("http://localhost:3000")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+			.allowedHeaders("*")
+			.allowCredentials(true);
 	}
 
 }
