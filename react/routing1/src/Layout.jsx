@@ -39,9 +39,9 @@ function Header(){
                 
                 if (link.type === "dropdown") {
                   // 2. 서브메뉴 중 currentRole에 맞는 항목만 필터링
-                  const filteredSubMenus = link.menus.filter(menu => 
-                    menu.role.includes(currentRole)
-                  );
+                  const filteredSubMenus = link.menus.filter(menu => {
+                    return menu.role.includes(currentRole)
+                  });
 
                   // 만약 해당 권한으로 표시할 서브메뉴가 없으면 드롭다운 표시 안 함
                   if (filteredSubMenus.length === 0) {
