@@ -4,6 +4,16 @@ import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router-dom";
 
+function checkRegex(value, regex, falseMessage){
+	if(regex.test(value)){
+		return true;
+	}
+	if(falseMessage){
+		alert(falseMessage);
+	}
+	return false;
+}
+
 function Signup(){
 
 	const [data, setData] = useState({id :'', pw : '', pw2: '', email : ''})
@@ -15,9 +25,23 @@ function Signup(){
 		setData({...data, [name] : value})
 	}
 	
+
 	//회원가입 버튼을 눌렀을 때 서버로 데이터를 전송하고 받는 코드
 	const submitHander = async e=>{
 		e.preventDefault();
+		if(!checkRegex(data.id, /^\w{3,}$/, "아이디는 3자 이상입니다.")){
+			return;
+		}
+
+		if(!checkRegex(data.pw, /^\w{3,}$/, "비번은 3자 이상입니다.")){
+			return;
+		}
+		
+		if(data.pw !== data.pw2){
+			alert("비번이 일치하지 않습니다.");
+			return;
+		}
+
 
 		try{
 			const response = await fetch("/api/auth/signup", {
