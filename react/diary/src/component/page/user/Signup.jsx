@@ -1,10 +1,13 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 export function Sginup(){
 
 	const [data, setData] = useState({email :'', pw : '', pw2 : '', nickname : ''})
 
 	const inputChange = (e) => setData({...data, [e.target.name] : e.target.value});
+
+	const navigate = useNavigate();
 
 	const submitHandler = async e=>{
 		e.preventDefault();
@@ -18,7 +21,10 @@ export function Sginup(){
 			});
 
 			const result = await response.json();
-			console.log(result);
+			alert(result.message);
+			if(result.success){
+				navigate("/");
+			}
 
 		}catch(e){
 			console.error(e);
