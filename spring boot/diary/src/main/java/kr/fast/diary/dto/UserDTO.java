@@ -1,6 +1,6 @@
 package kr.fast.diary.dto;
 
-public record SignupDTO(
+public record UserDTO(
 		String email, 
 		String pw, 
 		String nickname){}
