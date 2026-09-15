@@ -2,6 +2,7 @@ import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import { Signup } from "./component/page/user/Signup";
 import { Login } from "./component/page/user/Login";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuth } from "./provider/AuthContext";
 
 function App() {
   
@@ -53,7 +54,13 @@ function App() {
   );
 }
 function Home(){
-  return <div><h1>홈</h1></div>
+  const {user} = useAuth();
+  return (
+    <div>
+      <h1>홈</h1>
+      {user ? <h2>{user.nickname}님 환영합니다.</h2> : <></>}
+    </div>
+  )
 }
 
 

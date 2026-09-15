@@ -1,6 +1,11 @@
 package kr.fast.diary.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.fast.diary.dto.LoginResponse;
 import kr.fast.diary.dto.MessageResponse;
 import kr.fast.diary.dto.UserDTO;
+import kr.fast.diary.security.CustomUserDetails;
 import kr.fast.diary.service.UserService;
 import lombok.RequiredArgsConstructor;
 
@@ -41,5 +47,17 @@ public class AuthController {
 			lr = new LoginResponse(false, e.getMessage(), null);
 		}
 		return ResponseEntity.ok(lr);
+	}
+	@GetMapping("/me")
+	public ResponseEntity<Object> me(
+			@AuthenticationPrincipal CustomUserDetails userDetails){
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(userDetails != null) {
+			map.put("nickname", userDetails.getNickname());
+			map.put("userId", userDetails.getUserId());
+			map.put("email", userDetails.getEmail());
+			map.put("role", userDetails.getAuthorities());
+		}
+		return ResponseEntity.ok(map);
 	}
 }

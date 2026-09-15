@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { Container, Card, Form, Button } from "react-bootstrap";
+import { useAuth } from "../../../provider/AuthContext";
 
 export function Login(){
 
@@ -9,6 +10,8 @@ export function Login(){
 	const inputChange = (e) => setData({...data, [e.target.name] : e.target.value});
 
 	const navigate = useNavigate();
+
+  const {getMeAndSetUser} = useAuth();
 
 	const submitHandler = async e=>{
 		e.preventDefault();
@@ -25,6 +28,7 @@ export function Login(){
 			alert(result.message);
 			if(result.success){
         localStorage.setItem("accessToken", result.accessToken);
+        getMeAndSetUser();
 				navigate("/");
 			}
 
