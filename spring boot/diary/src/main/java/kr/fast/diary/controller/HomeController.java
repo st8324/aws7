@@ -14,7 +14,7 @@ public class HomeController {
 	
 	@GetMapping("/a")
 	public ResponseEntity<Object> home(@AuthenticationPrincipal CustomUserDetails userDetails){
-		System.out.println(userDetails);
+		
 		return ResponseEntity.ok(userDetails);
 	}
 }
