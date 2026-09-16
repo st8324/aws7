@@ -1,11 +1,17 @@
 package kr.fast.diary.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.fast.diary.dto.DiaryDTO;
 import kr.fast.diary.entity.Diary;
+import kr.fast.diary.entity.DiaryEmotion;
+import kr.fast.diary.entity.EmotionTag;
+import kr.fast.diary.repository.DiaryEmotionRepository;
 import kr.fast.diary.repository.DiaryRepository;
+import kr.fast.diary.repository.EmotionTagRepository;
 import kr.fast.diary.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +20,8 @@ import lombok.RequiredArgsConstructor;
 public class DiaryService {
 
 	private final DiaryRepository diaryRepository;
+	private final EmotionTagRepository emotionTagRepository;
+	private final DiaryEmotionRepository diaryEmotionRepository;
 
 	@Transactional
 	public boolean insertDiary(DiaryDTO dto, CustomUserDetails userDetails) {
@@ -28,8 +36,20 @@ public class DiaryService {
 				new Diary(userDetails.getUserId(), dto.title(), dto.content(),
 						dto.date(), dto.isPublic());
 		//저장
-		diaryRepository.save(diary);
+		Diary savedDiary = diaryRepository.save(diary);
+		System.out.println(savedDiary);
+		//일기의 감정 태그를 추가
+		for(Long emoId : dto.emotions()) {
+			DiaryEmotion diaryEmotion = new DiaryEmotion(emoId, savedDiary.getDiaryId());
+			diaryEmotionRepository.save(diaryEmotion);
+		}
 		return true;
+	}
+
+	@Transactional
+	public List<EmotionTag> getEmotionTags() {
+
+		return emotionTagRepository.findAllByOrderByDisplayOrder();
 	}
 	
 }

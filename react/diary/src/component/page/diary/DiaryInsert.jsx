@@ -1,11 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Container, Card, Form, Row, Col, Button, ButtonGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export function DiaryInsert(){
+
 	const [emotions, setEmotions] = useState([
 		{id : '1', name : '행복', emoji : '😊' }
 	])
-	const [data, setData] = useState({date :'', title : '', content : '', isPublic : ''})
+	const [data, setData] = useState({
+		date :'', 
+		title : '', 
+		content : '', 
+		isPublic : false,
+		emotions : []
+	})
+
+	const navigate = useNavigate();
 	
 	const submitHandler = async (e)=>{
 		e.preventDefault();
@@ -22,15 +32,49 @@ export function DiaryInsert(){
 				body : JSON.stringify(data)
 			})
 			const result = await response.json();
-			console.log(result);
+			alert(result.message);
+			if(result.success){
+				navigate("/diary/list");
+			}
 		}catch(e){
 
 		}
 	}
 
+	const loadEmotionTags = async ()=>{
+		try{
+			const response = await fetch("/api/emotion-tags");
+			if(!response.ok){
+				return;
+			}
+			const result = await response.json();
+			setEmotions(result);
+		}catch(e){
+			console.error(e);
+		}
+	}
+
 	const inputChange = e => setData({...data, [e.target.name] : e.target.value})
 	const isPublicChange = e => setData({...data, [e.target.name] : e.target.checked})
-	
+	//감정 태그 클릭했을 때 처리
+	const emotionChange = id => {
+		let tmpEmotions = [...data.emotions];
+		
+		//선택된 감정을 클릭하면(해제)
+		if(tmpEmotions.includes(id)){
+			tmpEmotions = tmpEmotions.filter(emoId=> emoId !== id);
+		}
+		//선택 안된 감정을 클릭하면(추가)
+		else{
+			tmpEmotions.push(id);
+		}
+		setData({...data, emotions : tmpEmotions});
+		
+	}
+	useEffect(()=>{
+		loadEmotionTags();
+	}, []);
+
 	return(
 		<Container className="py-4" style={{ maxWidth: "600px" }}>
 			<Card className="shadow-sm">
@@ -90,9 +134,11 @@ export function DiaryInsert(){
 									<Button
 										key={emo.id}
 										variant={
+											data.emotions.includes(emo.id) ? 
+											"primary" :
 											"outline-secondary"
 										}
-										onClick={() => {}}
+										onClick={() => {emotionChange(emo.id)}}
 										className="me-2 mb-2 rounded-pill"
 										type="button"
 									>

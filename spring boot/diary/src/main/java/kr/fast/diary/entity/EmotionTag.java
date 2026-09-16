@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EmotionTag {
 	
+
 	@Id
 	@Column(name = "emotion_tag_id")
 	Long id; 
@@ -23,4 +24,9 @@ public class EmotionTag {
 	
 	@Column(name = "display_order")
 	int displayOrder;
+	
+
+	public EmotionTag(Long emoId) {
+		this.id = emoId;
+	}
 }

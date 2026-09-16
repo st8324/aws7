@@ -12,11 +12,13 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "diary")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Diary {
 	
 	
@@ -45,5 +47,9 @@ public class Diary {
 		this.content = content;
 		this.diary_date = date;
 		this.isPublic = isPublic;
+	}
+
+	public Diary(Long diaryId) {
+		this.diaryId = diaryId;
 	}
 }

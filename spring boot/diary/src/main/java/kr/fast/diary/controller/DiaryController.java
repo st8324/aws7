@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.fast.diary.dto.DiaryDTO;
+import kr.fast.diary.dto.MessageResponse;
 import kr.fast.diary.security.CustomUserDetails;
 import kr.fast.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +24,13 @@ public class DiaryController {
 	public ResponseEntity<Object> post(
 			@AuthenticationPrincipal CustomUserDetails userDetails,
 			@RequestBody DiaryDTO dto){
-		
+		MessageResponse mr;
 		try{
-			boolean isInsert = diaryService.insertDiary(dto, userDetails); 
+			boolean isInsert = diaryService.insertDiary(dto, userDetails);
+			mr = new MessageResponse(isInsert, "일기를 등록했습니다.");
 		}catch(Exception e) {
-			
+			mr = new MessageResponse(false, e.getMessage());
 		}
-		return ResponseEntity.ok("{}");
+		return ResponseEntity.ok(mr);
 	}
 }
