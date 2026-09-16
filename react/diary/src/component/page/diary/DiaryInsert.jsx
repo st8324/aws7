@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Container, Card, Form, Row, Col, Button, ButtonGroup } from "react-bootstrap";
 
 export function DiaryInsert(){
 	const [emotions, setEmotions] = useState([
@@ -27,33 +28,99 @@ export function DiaryInsert(){
 		}
 	}
 
-	const intpustChange = e => setData({...data, [e.target.name] : e.target.value})
-
+	const inputChange = e => setData({...data, [e.target.name] : e.target.value})
+	const isPublicChange = e => setData({...data, [e.target.name] : e.target.checked})
+	
 	return(
-		<div>
-			<h1>일기 작성</h1>
-			<form onSubmit={submitHandler}>
-				<input type="date" name="date" onChange={intpustChange}/> <br />
-				<input type="text" name="title" onChange={intpustChange} /> <br />
-				<textarea name="content" onChange={intpustChange}></textarea> <br />
-				<input type="file" name="files"/> <br />
-				<div>
-					{
-						emotions.map(e=>{
-							return (
-								<label>
-									<input type="checkbox" name="emotions" value={e.id} /> {e.emoji}{e.name}
-								</label>
-							)
-						})
-					}
-				</div>
-				<label>
-					<input type="checkbox" name="isPublic" value={true} onChange={intpustChange} />공개여부
-				</label>
-				<br />
-				<button type="submit">일기 등록</button>
-			</form>
-		</div>
+		<Container className="py-4" style={{ maxWidth: "600px" }}>
+			<Card className="shadow-sm">
+				<Card.Body className="p-4">
+					<Card.Title as="h1" className="mb-4 text-center fs-3">
+						일기 작성
+					</Card.Title>
+
+					<Form onSubmit={submitHandler}>
+						<Form.Group as={Row} className="mb-3" controlId="date">
+							<Form.Label column sm={3}>날짜</Form.Label>
+							<Col sm={9}>
+								<Form.Control
+									type="date"
+									name="date"
+									value={data.date}
+									onChange={inputChange}
+								/>
+							</Col>
+						</Form.Group>
+
+						<Form.Group className="mb-3" controlId="title">
+							<Form.Label>제목</Form.Label>
+							<Form.Control
+								type="text"
+								name="title"
+								placeholder="제목을 입력하세요"
+								value={data.title}
+								onChange={inputChange}
+							/>
+						</Form.Group>
+
+						<Form.Group className="mb-3" controlId="content">
+							<Form.Label>내용</Form.Label>
+							<Form.Control
+								as="textarea"
+								name="content"
+								rows={6}
+								placeholder="오늘 하루는 어땠나요?"
+								value={data.content}
+								onChange={inputChange}
+							/>
+						</Form.Group>
+
+						<Form.Group className="mb-3" controlId="files">
+							<Form.Label>사진 첨부</Form.Label>
+							<Form.Control type="file" name="files" />
+							<Form.Text className="text-muted">
+								최대 1장까지 첨부할 수 있습니다.
+							</Form.Text>
+						</Form.Group>
+
+						<Form.Group className="mb-3">
+							<Form.Label className="d-block">오늘의 감정</Form.Label>
+							<ButtonGroup className="flex-wrap">
+								{emotions.map((emo) => (
+									<Button
+										key={emo.id}
+										variant={
+											"outline-secondary"
+										}
+										onClick={() => {}}
+										className="me-2 mb-2 rounded-pill"
+										type="button"
+									>
+										{emo.emoji} {emo.name}
+									</Button>
+								))}
+							</ButtonGroup>
+						</Form.Group>
+
+						<Form.Group className="mb-4">
+							<Form.Check
+								type="switch"
+								id="isPublic"
+								name="isPublic"
+								label="공개여부"
+								checked={data.isPublic}
+								onChange={isPublicChange}
+							/>
+						</Form.Group>
+
+						<div className="d-grid">
+							<Button type="submit" variant="primary" size="lg">
+								일기 등록
+							</Button>
+						</div>
+					</Form>
+				</Card.Body>
+			</Card>
+		</Container>
 	)
 }
