@@ -36,8 +36,14 @@ public class DiaryService {
 				new Diary(userDetails.getUserId(), dto.title(), dto.content(),
 						dto.date(), dto.isPublic());
 		//저장
-		Diary savedDiary = diaryRepository.save(diary);
-		System.out.println(savedDiary);
+		Diary savedDiary;
+		try {
+			savedDiary = diaryRepository.save(diary);
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("이미 등록된 날짜의 일기이거나 서버에 이상이 있습니다.");
+		}
+
 		//일기의 감정 태그를 추가
 		for(Long emoId : dto.emotions()) {
 			DiaryEmotion diaryEmotion = new DiaryEmotion(emoId, savedDiary.getDiaryId());
