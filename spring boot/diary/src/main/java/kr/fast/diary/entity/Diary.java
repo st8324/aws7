@@ -2,12 +2,18 @@ package kr.fast.diary.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -40,6 +46,13 @@ public class Diary {
 	LocalDateTime createdAt = LocalDateTime.now(); 
 	@Column(name = "updated_at")
 	LocalDateTime updatedAt = LocalDateTime.now();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name="diary_emotion", 
+			joinColumns = @JoinColumn(name="diary_id"),
+			inverseJoinColumns = @JoinColumn(name="emotion_tag_id"))
+	List<EmotionTag> emotions = new ArrayList<EmotionTag>();
 	
 	public Diary(Long userId, String title, String content, LocalDate date, boolean isPublic, String savedFilename) {
 		this.userId = userId;

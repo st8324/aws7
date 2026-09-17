@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -52,14 +53,35 @@ public class DiaryController {
 		}
 	}
 	@GetMapping("/public")
-	public ResponseEntity<Object> publicGet(
-			@AuthenticationPrincipal CustomUserDetails userDetails){
+	public ResponseEntity<Object> publicGet(){
 		MessageResponse mr;
 		try{
-			List<Diary> diaries = diaryService.getPublicDiaries(userDetails);
+			List<Diary> diaries = diaryService.getPublicDiaries();
 			return ResponseEntity.ok(diaries);
 		}catch(Exception e) {
 			return ResponseEntity.ok("[]");
+		}
+	}
+	@GetMapping("/public/{id}")
+	public ResponseEntity<Object> publicIdGet(@PathVariable("id") Long id){
+		MessageResponse mr;
+		try{
+			Diary diary = diaryService.getDiary(id);
+			return ResponseEntity.ok(diary);
+		}catch(Exception e) {
+			return ResponseEntity.ok("[]");
+		}
+	}
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> idGet(
+			@PathVariable("id") Long id,
+			@AuthenticationPrincipal CustomUserDetails userDetails){
+		MessageResponse mr;
+		try{
+			Diary diary = diaryService.getDiary(id, userDetails);
+			return ResponseEntity.ok(diary);
+		}catch(Exception e) {
+			return ResponseEntity.ok("{}");
 		}
 	}
 }

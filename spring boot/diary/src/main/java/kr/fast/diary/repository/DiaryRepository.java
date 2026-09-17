@@ -12,4 +12,8 @@ public interface DiaryRepository extends JpaRepository<Diary, Long> {
 
 	List<Diary> findAllByIsPublicTrue();
 
+	Diary findByDiaryIdAndIsPublicTrue(Long id);
+
+	Diary findByDiaryId(Long id);
+
 }

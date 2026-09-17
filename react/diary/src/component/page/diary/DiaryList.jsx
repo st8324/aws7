@@ -125,10 +125,11 @@ function PublicDiaries() {
 }
 
 function DiaryCard({ diary, showAuthor }) {
+
 	return (
 		<Card
 			as={Link}
-			to={"/diary/detail/" + diary.diaryId}
+			to={"/diary/detail/"+ `${diary.public?"/public/":""}` + diary.diaryId}
 			className="shadow-sm text-decoration-none text-body"
 		>
 			<Card.Body className="d-flex justify-content-between align-items-start">

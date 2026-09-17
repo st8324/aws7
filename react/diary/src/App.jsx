@@ -6,6 +6,7 @@ import { useAuth } from "./provider/AuthContext";
 import { MyNav } from "./component/layout/MyNav";
 import { DiaryInsert } from "./component/page/diary/DiaryInsert";
 import { DiaryList } from "./component/page/diary/DiaryList";
+import { DiaryDetail } from "./component/page/diary/DiaryDetail";
 
 function App() {
   
@@ -37,6 +38,8 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/diary/insert" element={<DiaryInsert/>}></Route>
         <Route path="/diary/list" element={<DiaryList/>}></Route>
+        <Route path="/diary/detail/:id" element={<DiaryDetail/>}></Route>
+        <Route path="/diary/detail/public/:id" element={<DiaryDetail isPublic={true}/>}></Route>
       </Routes>
     </BrowserRouter>
   );

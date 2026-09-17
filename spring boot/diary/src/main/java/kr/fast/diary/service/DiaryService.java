@@ -83,11 +83,22 @@ public class DiaryService {
 		return diaryRepository.findAllByUserIdOrderByDiaryDateDesc(userDetails.getUserId());
 	}
 
-	public List<Diary> getPublicDiaries(CustomUserDetails userDetails) {
-		if(userDetails == null) {
-			throw new RuntimeException();
-		}
+	public List<Diary> getPublicDiaries() {
 		return diaryRepository.findAllByIsPublicTrue();
 	}
+
+	public Diary getDiary(Long id) {
+		return diaryRepository.findByDiaryIdAndIsPublicTrue(id);
+	}
+
+	public Diary getDiary(Long id, CustomUserDetails userDetails) {
+		Diary diary = diaryRepository.findByDiaryId(id);
+		if(diary == null || userDetails == null || diary.getUserId() != userDetails.getUserId()) {
+			throw new RuntimeException("올바르지 않은 접근입니다.");
+		}
+		return diary;
+	}
+
+	
 	
 }
