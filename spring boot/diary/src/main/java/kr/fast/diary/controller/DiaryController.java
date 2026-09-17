@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.fast.diary.dto.DiaryDTO;
 import kr.fast.diary.dto.MessageResponse;
+import kr.fast.diary.entity.Diary;
 import kr.fast.diary.security.CustomUserDetails;
 import kr.fast.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +38,28 @@ public class DiaryController {
 			mr = new MessageResponse(false, e.getMessage());
 		}
 		return ResponseEntity.ok(mr);
+	}
+	
+	@GetMapping("")
+	public ResponseEntity<Object> get(
+			@AuthenticationPrincipal CustomUserDetails userDetails){
+		MessageResponse mr;
+		try{
+			List<Diary> diaries = diaryService.getDiaries(userDetails);
+			return ResponseEntity.ok(diaries);
+		}catch(Exception e) {
+			return ResponseEntity.ok("[]");
+		}
+	}
+	@GetMapping("/public")
+	public ResponseEntity<Object> publicGet(
+			@AuthenticationPrincipal CustomUserDetails userDetails){
+		MessageResponse mr;
+		try{
+			List<Diary> diaries = diaryService.getPublicDiaries(userDetails);
+			return ResponseEntity.ok(diaries);
+		}catch(Exception e) {
+			return ResponseEntity.ok("[]");
+		}
 	}
 }

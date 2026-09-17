@@ -29,7 +29,7 @@ public class Diary {
 	@Column(name = "user_id")
 	Long userId; 
 	@Column(name = "diary_date")
-	LocalDate diary_date; 
+	LocalDate diaryDate; 
 	String title; 
 	String content; 
 	@Column(name = "image_url")
@@ -45,7 +45,7 @@ public class Diary {
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
-		this.diary_date = date;
+		this.diaryDate = date;
 		this.isPublic = isPublic;
 		this.imageUrl = savedFilename;
 	}

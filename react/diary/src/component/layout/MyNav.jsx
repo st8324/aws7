@@ -20,6 +20,9 @@ export function MyNav(){
 						<Nav.Link as={Link} to="/diary/insert">
 							일기 작성
 						</Nav.Link>
+						<Nav.Link as={Link} to="/diary/list">
+							일기 목록
+						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

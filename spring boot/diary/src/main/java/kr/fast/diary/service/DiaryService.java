@@ -75,5 +75,19 @@ public class DiaryService {
 
 		return emotionTagRepository.findAllByOrderByDisplayOrder();
 	}
+
+	public List<Diary> getDiaries(CustomUserDetails userDetails) {
+		if(userDetails == null) {
+			throw new RuntimeException();
+		}
+		return diaryRepository.findAllByUserIdOrderByDiaryDateDesc(userDetails.getUserId());
+	}
+
+	public List<Diary> getPublicDiaries(CustomUserDetails userDetails) {
+		if(userDetails == null) {
+			throw new RuntimeException();
+		}
+		return diaryRepository.findAllByIsPublicTrue();
+	}
 	
 }
