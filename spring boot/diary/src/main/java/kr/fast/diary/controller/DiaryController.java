@@ -7,15 +7,18 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.fast.diary.dto.CommentDTO;
 import kr.fast.diary.dto.DiaryDTO;
 import kr.fast.diary.dto.MessageResponse;
 import kr.fast.diary.entity.Diary;
 import kr.fast.diary.security.CustomUserDetails;
+import kr.fast.diary.service.CommentService;
 import kr.fast.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class DiaryController {
 	
 	private final DiaryService diaryService;
+	private final CommentService commentService;
 
 	@PostMapping("")
 	public ResponseEntity<Object> post(
@@ -83,5 +87,20 @@ public class DiaryController {
 		}catch(Exception e) {
 			return ResponseEntity.ok("{}");
 		}
+	}
+	
+	@PostMapping("/{id}/comments")
+	public ResponseEntity<Object> idCommentsPost(
+			@AuthenticationPrincipal CustomUserDetails userDetails,
+			@RequestBody CommentDTO dto){
+		MessageResponse mr;
+		try {
+			commentService.insertComment(dto, userDetails);
+			mr = new MessageResponse(true, "댓글을 등록했습니다.");
+		}catch(Exception e) {
+			e.printStackTrace();
+			mr = new MessageResponse(false, e.getMessage());
+		}
+		return ResponseEntity.ok(mr);
 	}
 }
