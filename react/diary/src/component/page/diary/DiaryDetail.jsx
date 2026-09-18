@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useAuth } from "../../../provider/AuthContext"
 import { useParams } from "react-router-dom";
-import { Container, Card, Badge, Alert, Form, Button } from "react-bootstrap";
+import { Container, Card, Badge, Alert, Form, Button, ListGroup } from "react-bootstrap";
 import api from "../../../provider/api";
+import axios from "axios";
 
 export function DiaryDetail({ isPublic }) {
 	const [diary, setDiary] = useState(null);
@@ -90,6 +91,8 @@ function DetailCard({diary}){
 function CommentBox({id}){
 
 	const [comment, setComment] = useState({content : '', diaryId : id})
+	const [comments, setComments] = useState([]);
+
 	const inputChange = e => setComment({...comment, [e.target.name] : e.target.value});
 	const submitHandler = async e =>{
 		e.preventDefault();
@@ -98,12 +101,46 @@ function CommentBox({id}){
 		if(data.success){
 			setComment({...comment, content : ''})
 			//댓글 목록 불러오기
+			loadComments();
 		}
 	}
+
+	const loadComments = async ()=>{
+		try{
+			const {data} = await axios.get(`/api/diaries/${id}/comments`)
+			setComments(data);
+		}catch(e){
+			console.error(e);
+		}
+	}
+	useEffect(()=>{
+		loadComments();
+	}, [])
+
 	return (
 		<>
 			<Card className="shadow-sm mt-4">
 				<Card.Body className="p-4">
+					<Card.Title as="h2" className="fs-5 fw-semibold mb-3">
+          댓글 {comments.length > 0 && <span className="text-muted">({comments.length})</span>}
+        </Card.Title>
+
+        {comments.length > 0 ? (
+          <ListGroup variant="flush" className="mb-4">
+            {comments.map((c) => (
+              <ListGroup.Item key={c.id} className="px-0">
+                <div className="d-flex justify-content-between align-items-start">
+                  <span className="fw-semibold small">{c.nickname}</span>
+                  <span className="text-muted small">{c.createdAt.replace("T", " ")}</span>
+                </div>
+                <div style={{ whiteSpace: "pre-wrap" }}>{c.content}</div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        ) : (
+          <p className="text-muted small mb-4">아직 등록된 댓글이 없습니다.</p>
+        )}
+
 					<hr />
 
 					<Form onSubmit={submitHandler} className="mt-3">

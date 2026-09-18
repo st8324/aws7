@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.fast.diary.dto.CommentDTO;
 import kr.fast.diary.dto.DiaryDTO;
 import kr.fast.diary.dto.MessageResponse;
+import kr.fast.diary.entity.Comment;
 import kr.fast.diary.entity.Diary;
 import kr.fast.diary.security.CustomUserDetails;
 import kr.fast.diary.service.CommentService;
@@ -102,5 +103,10 @@ public class DiaryController {
 			mr = new MessageResponse(false, e.getMessage());
 		}
 		return ResponseEntity.ok(mr);
+	}
+	@GetMapping("/{id}/comments")
+	public ResponseEntity<Object> idCommentsGet(@PathVariable("id") Long diaryId){
+		List<Comment> comments = commentService.getComments(diaryId);
+		return ResponseEntity.ok(comments);
 	}
 }

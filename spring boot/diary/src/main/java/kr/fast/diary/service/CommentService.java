@@ -1,5 +1,7 @@
 package kr.fast.diary.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +36,10 @@ public class CommentService {
 		//엔티티 생성
 		Comment comment = new Comment(dto.diaryId(), userDetails.getUserId(), dto.content());
 		commentRepository.save(comment);
+	}
+
+	public List<Comment> getComments(Long diaryId) {
+		return commentRepository.findAllByDiaryIdOrderByCommentIdDesc(diaryId);
 	}
 
 }
