@@ -26,3 +26,8 @@ replay_pid*
 .classpath
 .project
 */.gitignore
+
+# 파이썬 gitignore
+.venv/
+__pycache__/
+.env
