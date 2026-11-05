@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
@@ -14,14 +15,14 @@ BASE_DIR = Path(__file__).resolve().parent
 # 학습할 데이터 위치 및 파일명
 DATA_PATH = BASE_DIR / "used_cars.csv"
 # 저장된 모델 위치 및 파일명
-MODEL_PATH = BASE_DIR / "price_modle.joblib"
+MODEL_PATH = BASE_DIR / "price_model.joblib"
 # 저장된 스케일러 위치 및 파일명
 SCALER_PATH = BASE_DIR / "price_scaler.joblib"
 
 def load_data():
 	"""1. 데이터 선택 : csv 파일을 읽어서 특징(X)과 정답(y)로 나눔"""
 	# csv파일에서 데이터를 읽어서 표로 만듬
-	df = pd.read_csv("used_cars.csv", encoding="utf-8")
+	df = pd.read_csv(DATA_PATH, encoding="utf-8")
 
 	# 문제(특징. feature). 특징 선택할 땐 반드시 리스트로 []
 	X = df[["car_type", "year_age", "mileage_km", "engine_cc", "accident"]]
@@ -61,6 +62,18 @@ def predict_price(model, scaler, car):
 	X_new_s = scaler.transform(X_new_oh)
 	return model.predict(X_new_s)[0]
 
+def save(model, scaler):
+	"""저장하기 : 모델과 스케일러를 저장한다"""
+	joblib.dump(model, MODEL_PATH)
+	joblib.dump(scaler, SCALER_PATH)
+
+def load():
+	"""불러오기 : 모델과 스케일러를 불러온다"""
+	# 저장된 모델이나 스케일러가 없으면 불러오기 실패(None, None을 반환)
+	if not MODEL_PATH.exists() or not SCALER_PATH.exists():
+		return None, None
+	return joblib.load(MODEL_PATH), joblib.load(SCALER_PATH)
+
 def main():
 	# 1. 데이터 선택
 	X,y = load_data()
@@ -68,8 +81,13 @@ def main():
 	X2 = one_hot(X)
 	# 3. 훈련, 테스트 분리
 	X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=0.2, random_state=42)
-	# 4. 학습
-	model, scaler = train(X_train, y_train)
+	# 4. 모델 불러오기 
+	model, scaler = load()
+	if model is None: #학습된 모델이 없으면
+		print("........학습중........")
+		# 4. 학습
+		model, scaler = train(X_train, y_train)
+		print(".......학습완료.......")
 	# 5. 평가
 	X_test_s = scaler.transform(X_test)
 	print(f"KNN 스케일링 O: {mean_absolute_error(y_test, model.predict(X_test_s)):.0f}만원")
@@ -78,10 +96,12 @@ def main():
 	car = { 
     "car_type" : "SUV", "year_age" : 3, "mileage_km" : 40000, "engine_cc" : 2500, "accident" : 0
 	}
+	print("........테스트........")
 	print(f"차종 : {car["car_type"]}, 연식 : {car["year_age"]}, 주행거리 : {car["mileage_km"]}km, ", end="")
 	print(f"배기량 : {car["engine_cc"]}cc, 사고유무 : {"있음" if car["accident"] else "없음"}")
 	print(f"예측 시세 : {predict_price(model, scaler, car):.0f}만원")
-
+	save(model, scaler)
+	print(".......저장완료.......")
 
 if __name__ == "__main__":
 	main()
