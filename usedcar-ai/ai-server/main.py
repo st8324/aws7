@@ -50,6 +50,7 @@ app.include_router(listing.router)
 @app.get("/health", response_model=HealthResponse, tags=["0 상태"])
 def health():
     """Spring이 이 값을 보고 화면에 '사용 가능 / 준비 중'을 표시한다"""
+    """화면에서 AI서버 연겸됨 뒤에 나오는 사용 가능 여부를 여기서 확인한다"""
     return HealthResponse(
         features=Features(
             price=price.is_ready(),
