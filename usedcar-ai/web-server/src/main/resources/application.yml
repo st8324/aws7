@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: web-server
+
+  # JSON 이름을 snake_case로 통일한다 (mileage_km).
+  # Java 코드는 mileageKm, JSON은 mileage_km. 변환은 Jackson이 자동으로 한다.
+  # React와 주고받을 때, FastAPI와 주고받을 때 모두 적용된다.
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  # 사진 업로드 용량 (기본 1MB → 5MB)
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
+# FastAPI 서버 설정
+ai-server:
+  base-url: http://localhost:8000
+  connect-timeout: 2s     # 서버에 연결하는 데 기다리는 시간
+  timeout:                # 응답을 기다리는 시간 (기능마다 다르다)
+    health: 2s
+    price: 3s
+    car-type: 15s
+    listing: 30s

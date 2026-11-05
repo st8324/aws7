@@ -1,0 +1,19 @@
+# 버전을 고정한다. 특히 scikit-learn은 학습한 버전과 서버 버전이 같아야 모델 파일이 열린다.
+
+# 0단계: 서버
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.33   # 파일 업로드 (2단계 사진)
+python-dotenv==1.2.4       # .env 파일 읽기 (3단계 API 키)
+
+# 1단계: 머신러닝
+pandas==3.1.0
+scikit-learn==1.9.1
+joblib==1.6.0
+
+# 2단계: 딥러닝 (사진 열기)
+pillow==13.0.0
+# 이미지 모델 패키지는 2단계에서 추가한다
+
+# 3단계: AI
+# LLM API 패키지는 3단계에서 추가한다
