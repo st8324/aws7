@@ -35,5 +35,6 @@ __pycache__/
 # jupyter notebook
 .ipynb_checkpoints/
 
-# 예제 이미지 파일
+# 딥러닝 예제 이미지 파일
 digits_images/
+data/
