@@ -6,10 +6,14 @@ import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
@@ -84,15 +88,21 @@ public class AiClient {
 
     /** 2단계: 사진으로 차종 분류. 받은 파일을 그대로 multipart로 넘긴다 */
     public CarTypeResponse classifyCarType(MultipartFile file) {
-        MultipartBodyBuilder parts = new MultipartBodyBuilder();
-        parts.part("file", file.getResource())          // FastAPI 쪽 이름도 file
-                .filename(file.getOriginalFilename() == null ? "upload" : file.getOriginalFilename())
-                .contentType(MediaType.parseMediaType(file.getContentType()));
+    	String filename = file.getOriginalFilename() == null ? "upload" : file.getOriginalFilename();
+        String contentType = file.getContentType() == null
+                ? MediaType.APPLICATION_OCTET_STREAM_VALUE : file.getContentType();
+
+        HttpHeaders partHeaders = new HttpHeaders();
+        partHeaders.setContentDisposition(ContentDisposition.formData().name("file").filename(filename).build());
+        partHeaders.setContentType(MediaType.parseMediaType(contentType));
+
+        MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+        parts.add("file", new HttpEntity<>(file.getResource(), partHeaders));
 
         return call("/car-type/classify", () -> carTypeClient.post()
                 .uri("/car-type/classify")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
-                .body(parts.build())
+                .body(parts)
                 .retrieve()
                 .body(CarTypeResponse.class));
     }
