@@ -11,6 +11,7 @@ Pydantic 모델에 타입과 범위를 적어 두면
 from typing import Literal
 
 from pydantic import BaseModel, Field
+from typing import Optional
 
 CarType = Literal["경차", "세단", "SUV"]
 Tone = Literal["친근하게", "전문적으로", "짧게"]
@@ -61,3 +62,11 @@ class ListingRequest(CarInfo):
 class ListingResponse(BaseModel):
     title: str
     body: str
+
+class CarInfoExtract(BaseModel):
+    """Gemini 추출용"""
+    car_type: Optional[CarType] = None
+    year_age: Optional[int] = Field(default=None, description="출고 후 몇년")
+    mileage_km: Optional[int] = Field(default=None, description="주행거리(km)")
+    engine_cc: Optional[int] = Field(default=None, description="배기량(cc)")
+    accident: Optional[bool] = Field(default=None, description="사고 이력 여부")
